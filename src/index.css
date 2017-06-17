@@ -1,0 +1,8 @@
+
+html, body, :global(#root) {
+  height: 100%;
+}
+
+:global(.ant-menu){
+  border-bottom: none !important;
+}
