@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, IndexRoute } from 'dva/router';
 import IndexPage from './routes/IndexPage';
-import HomePage from './routes/HomePage.js';
+import HomePage from './routes/HomePage';
 
 function RouterConfig({ history }) {
   return (

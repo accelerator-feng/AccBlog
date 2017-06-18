@@ -68,17 +68,17 @@ export default class Header extends React.Component {
               right: 0,
             }}
           >
-            <Menu.Item key="look">
-              <Link to="/"><Icon type="appstore" />随便看看</Link>
+            <Menu.Item key="home">
+              <Link to="/"><Icon type="appstore" />主页</Link>
             </Menu.Item>
-            <Menu.Item key="messageBoard">
-              <Link to="/message"><Icon type="appstore" />留言板</Link>
+            <Menu.Item key="archive">
+              <Link to="/archive"><Icon type="appstore" />归档</Link>
             </Menu.Item>
-            <Menu.Item key="music">
-              <Link to="/music"><Icon type="appstore" />音乐云</Link>
+            <Menu.Item key="categories">
+              <Link to="/categories"><Icon type="appstore" />分类</Link>
             </Menu.Item>
-            <Menu.Item key="movie">
-              <Link to="/movie"><Icon type="appstore" />电影院</Link>
+            <Menu.Item key="about">
+              <Link to="/about"><Icon type="appstore" />关于我</Link>
             </Menu.Item>
             {userShow}
           </Menu>

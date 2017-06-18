@@ -1,15 +1,38 @@
-.article-content{
-  border-bottom: 1px solid #eee;
-  line-height: 50px;
-  padding: 10px 30px;
+.article-content {
+    border-bottom: 1px solid #eee;
+    padding: 10px 30px;
+
+    line-height: 50px;
 }
 
-.article-footer{
-  padding: 10px 30px;
+.article-footer {
+    padding: 10px 30px;
 }
 
-.pagination{
- margin-top:15px;
- position: relative;
- left: 60%;
+.pagination {
+    position: relative;
+    left: 60%;
+
+    margin-top: 15px;
+}
+.slider {
+    display: inline-block;
+
+    margin: 5px 12px;
+    width: 60%;
+}
+
+.music-info {
+    position: absolute;
+    top: 25%;
+    left: 30%;
+}
+
+.mask{
+  width: 66px;
+  height: 66px;
+  position: absolute;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,0.1);
 }
