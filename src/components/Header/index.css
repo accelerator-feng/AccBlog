@@ -1,0 +1,36 @@
+.title {
+    position: absolute;
+
+    margin-left: 10px;
+
+    font-size: 40px;
+
+    color: #fff;
+}
+
+.logo {
+    width: 88px;
+    height: 88px;
+
+    vertical-align: middle;
+}
+
+.container {
+    padding-top: 29px;
+    height: 180px;
+
+    background: #2ca6cb;
+
+    box-shadow: 2px 4px 5px rgba(3,3,3,.2);
+}
+
+.desc {
+    position: absolute;
+    top: 62px;
+
+    margin-left: 10px;
+
+    font-size: 18px;
+
+    color: #fff;
+}

@@ -1,0 +1,129 @@
+@font-face {
+    font-family: "iconfont";
+
+    src: url("//at.alicdn.com/t/font_ztaivwl27wb6s9k9.eot?t=1497758887071"); /* IE9*/
+    src: url("//at.alicdn.com/t/font_ztaivwl27wb6s9k9.woff?t=1497758887071") format("woff"), /* chrome, firefox */
+    url("//at.alicdn.com/t/font_ztaivwl27wb6s9k9.ttf?t=1497758887071") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url("//at.alicdn.com/t/font_ztaivwl27wb6s9k9.svg?t=1497758887071#iconfont") format("svg"); /* iOS 4.1- */
+}
+
+.container {
+    margin-top: 16px;
+    padding: 0 26px 8px 26px;
+    height: 248px;
+
+    background: #1f1f1f;
+}
+
+.author {
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+
+    background: no-repeat url("../../assets/tuzi.jpg") ;
+    background-size: 100% 100%;
+
+    transition: transform 2s ease-out;
+}
+
+.author:hover {
+    transform: rotate(360deg);
+}
+
+.line {
+    display: block;
+
+    position: relative;
+    left: 10%;
+
+    width: 2px;
+    height: 80px;
+
+    background: #fff;
+}
+
+.title {
+    float: left;
+
+    position: absolute;
+    top: 50%;
+    left: 30%;
+
+    font-size: 20px;
+
+    color: #fff;
+}
+.desc {
+    float: left;
+
+    position: absolute;
+    top: 70%;
+    left: 30%;
+
+    font-family: "Verdana";
+    font-size: 20px;
+
+    color: #fff;
+}
+
+
+
+
+
+.iconfont {
+    margin: 0 10px;
+
+    font-family: "iconfont" !important;
+    font-size: 32px;
+    font-style: normal;
+
+    color: #fff;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.iconWeixin:before {
+    content: "\e600";
+}
+
+.iconZhihu:before {
+    content: "\e6d1";
+}
+
+.iconfont:hover {
+    color: #2ca6cb;
+}
+
+.icon {
+    margin: 0 10px;
+
+    font-size: 30px;
+
+    color: #fff;
+}
+.icon:hover {
+    color: #2ca6cb;
+}
+
+.social-font {
+    position: absolute;
+    top: 70px;
+    left: 60%;
+}
+.copyright {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    font-family: "Verdana";
+    font-size: 13px;
+
+    color: #fff;
+
+    transform: translate(-50%,-60%);
+}
+.copyright-link {
+    color: #2ca6cb;
+}
+

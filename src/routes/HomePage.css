@@ -1,0 +1,15 @@
+.article-content{
+  border-bottom: 1px solid #eee;
+  line-height: 50px;
+  padding: 10px 30px;
+}
+
+.article-footer{
+  padding: 10px 30px;
+}
+
+.pagination{
+ margin-top:15px;
+ position: relative;
+ left: 60%;
+}

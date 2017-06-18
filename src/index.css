@@ -1,8 +1,35 @@
 
-html, body, :global(#root) {
-  height: 100%;
+html,
+body,
+:global(#root) {
+    height: 100%;
+
+    font-family: "Helvetica Neue","Helvetica","Microsoft YaHei","WenQuanYi Micro Hei",Arial,sans-serif;
+
+    background: #ddd;
 }
 
-:global(.ant-menu){
-  border-bottom: none !important;
+:global(.ant-menu) {
+    border-bottom: none !important;
+
+    background: #2ca6cb !important;
 }
+
+:global(.ant-back-top) {
+    bottom: 100px;
+}
+
+:global(.ant-card-head-title) {
+    font-size: 25px !important;
+    font-weight: 400 !important;
+
+    color: #2ca6cb !important;
+}
+
+:global(.ant-card-head) {
+    padding-bottom: 60px !important;
+}
+
+:global(.ant-card-body) {
+    padding: 0 !important;
+};

@@ -11,19 +11,17 @@ class MyModal extends React.Component {
       confirmDirty: false,
     };
     this.action = 'register';
-    this.message = {
-      login: ['登陆中', '成功登陆'],
-      register: ['注册中', '注册成功'],
-    };
     this.field = {
       login: ['userName', 'password'],
       register: ['r_userName', 'r_password', 'r_confirmPassword'],
     };
   }
+
   handleTabChange = key => {
     this.props.form.resetFields();
     this.action = key === 'login' ? 'login' : 'register';
   };
+
   checkPassword = (rule, value, callback) => {
     const form = this.props.form;
     if (value && value !== form.getFieldValue('r_password')) {
@@ -32,6 +30,7 @@ class MyModal extends React.Component {
       callback();
     }
   };
+
   checkConfirm = (rule, value, callback) => {
     const form = this.props.form;
     if (value && this.state.confirmDirty) {
@@ -41,35 +40,44 @@ class MyModal extends React.Component {
     }
     callback();
   };
+
   handleConfirmBlur = e => {
     const value = e.target.value;
     this.setState({
       confirmDirty: this.state.confirmDirty || !!value,
     });
   };
+
   handleCancel = () => {
-    const props = this.props;
-    props.setModalVisible(false);
-    props.form.resetFields();
+    this.props.dispatch({
+      type: 'user/hide',
+      payload: { isModalVisible: false },
+    });
+    this.props.form.resetFields();
   };
+
   handleSubmit = e => {
     e.preventDefault();
-    const { field, action, message } = this,
-      formData = this.props.form.getFieldsValue();
-    this.props.form.validateFields(field[action], {}, err => {
+    const { field, action, props } = this,
+      formData = props.form.getFieldsValue();
+    props.form.validateFields(field[action], {}, err => {
       if (!err) {
-        this.props.action(action, formData, message);
+        props.dispatch({
+          type: `user/${action}`,
+          payload: formData,
+        });
         this.handleCancel();
       }
     });
   };
+
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
       <Modal
         title="用户中心"
         wrapClassName="vertical-center-modal"
-        visible={this.props.modalVisible}
+        visible={this.props.ismodalVisible}
         onCancel={this.handleCancel}
         footer={[
           <Button size="large" onClick={this.handleCancel}>
