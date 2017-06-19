@@ -7,14 +7,14 @@ import QRcode from '../../assets/QRcode.png';
 export default function Footer() {
   return (
     <Row className={styles.container}>
-      <Col span={1} />
-      <Col span={10}>
+      <Col span={2} />
+      <Col span={12}>
         <sapn className={styles.line} />
         <div className={styles.author} />
         <span className={styles.title}>未来的前端攻城狮</span>
         <span className={styles.desc}>Stay hungry. Stay foolish.</span>
       </Col>
-      <Col span={12}>
+      <Col span={8}>
         <div className={styles['social-font']}>
           <a
             href="https://github.com/accelerator-feng"
@@ -45,7 +45,7 @@ export default function Footer() {
           </a>
         </div>
       </Col>
-      <Col span={1} />
+      <Col span={2} />
       <div className={styles.copyright}>
         Powered by
         {' '}

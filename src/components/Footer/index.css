@@ -16,6 +16,7 @@
 }
 
 .author {
+   transform: translate(-50%);
     border-radius: 50%;
     width: 110px;
     height: 110px;
@@ -33,8 +34,7 @@
 .line {
     display: block;
 
-    position: relative;
-    left: 10%;
+
 
     width: 2px;
     height: 80px;
@@ -43,22 +43,22 @@
 }
 
 .title {
-    float: left;
+
 
     position: absolute;
     top: 50%;
-    left: 30%;
+    left: 25%;
 
     font-size: 20px;
 
     color: #fff;
 }
 .desc {
-    float: left;
+
 
     position: absolute;
     top: 70%;
-    left: 30%;
+    left: 20%;
 
     font-family: "Verdana";
     font-size: 20px;
@@ -109,7 +109,7 @@
 .social-font {
     position: absolute;
     top: 70px;
-    left: 60%;
+    right: 0;
 }
 .copyright {
     position: absolute;

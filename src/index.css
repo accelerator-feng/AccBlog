@@ -1,4 +1,3 @@
-
 html,
 body,
 :global(#root) {
@@ -24,10 +23,6 @@ body,
     font-weight: 400 !important;
 
     color: #2ca6cb !important;
-}
-
-:global(.ant-card-head) {
-    padding-bottom: 60px !important;
 }
 
 :global(.ant-card-body) {

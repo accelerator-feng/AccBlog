@@ -22,158 +22,9 @@ export default class HomePage extends React.Component {
               </span>
             }
             style={{
-              width: 900,
               color: '#817c7c',
-              paddingTop: 20,
-              fontSize: 15,
-              marginTop: 20,
-            }}
-            bodyStyle={{ color: '#413f3f', fontSize: 20 }}
-          >
-            <div className={styles['article-content']}>
-              <div>React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）</div>
-              <Button
-                style={{
-                  background: '#ddd',
-                  color: '#817c7c',
-                  borderRadius: '14px',
-                }}
-              >
-                Read More
-              </Button>
-            </div>
-            <div className={styles['article-footer']}>
-              <Icon type="folder" />{' '}<Link>Javascript</Link>&nbsp;&nbsp;
-              <Icon type="tags" />{' '}<Link>React</Link>
-            </div>
-          </Card>
-          <Card
-            title="shouldComponentUpdate及diff算法原理（转载）"
-            extra={
-              <span>
-                <Icon type="clock-circle-o" />
-                {' '}
-                发表于 2017-04-19 By
-                {' '}
-                <Link href="/about">Yin Feng</Link>
-              </span>
-            }
-            style={{
-              width: 900,
-              color: '#817c7c',
-              paddingTop: 20,
-              fontSize: 15,
-              marginTop: 20,
-            }}
-            bodyStyle={{ color: '#413f3f', fontSize: 20 }}
-          >
-            <div className={styles['article-content']}>
-              <div>React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）</div>
-              <Button
-                style={{
-                  background: '#ddd',
-                  color: '#817c7c',
-                  borderRadius: '14px',
-                }}
-              >
-                Read More
-              </Button>
-            </div>
-            <div className={styles['article-footer']}>
-              <Icon type="folder" />{' '}<Link>Javascript</Link>&nbsp;&nbsp;
-              <Icon type="tags" />{' '}<Link>React</Link>
-            </div>
-          </Card>
-          <Card
-            title="shouldComponentUpdate及diff算法原理（转载）"
-            extra={
-              <span>
-                <Icon type="clock-circle-o" />
-                {' '}
-                发表于 2017-04-19 By
-                {' '}
-                <Link href="/about">Yin Feng</Link>
-              </span>
-            }
-            style={{
-              width: 900,
-              color: '#817c7c',
-              paddingTop: 20,
-              fontSize: 15,
-              marginTop: 20,
-            }}
-            bodyStyle={{ color: '#413f3f', fontSize: 20 }}
-          >
-            <div className={styles['article-content']}>
-              <div>React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）</div>
-              <Button
-                style={{
-                  background: '#ddd',
-                  color: '#817c7c',
-                  borderRadius: '14px',
-                }}
-              >
-                Read More
-              </Button>
-            </div>
-            <div className={styles['article-footer']}>
-              <Icon type="folder" />{' '}<Link>Javascript</Link>&nbsp;&nbsp;
-              <Icon type="tags" />{' '}<Link>React</Link>
-            </div>
-          </Card>
-          <Card
-            title="shouldComponentUpdate及diff算法原理（转载）"
-            extra={
-              <span>
-                <Icon type="clock-circle-o" />
-                {' '}
-                发表于 2017-04-19 By
-                {' '}
-                <Link href="/about">Yin Feng</Link>
-              </span>
-            }
-            style={{
-              width: 900,
-              color: '#817c7c',
-              paddingTop: 20,
-              fontSize: 15,
-              marginTop: 20,
-            }}
-            bodyStyle={{ color: '#413f3f', fontSize: 20 }}
-          >
-            <div className={styles['article-content']}>
-              <div>React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）</div>
-              <Button
-                style={{
-                  background: '#ddd',
-                  color: '#817c7c',
-                  borderRadius: '14px',
-                }}
-              >
-                Read More
-              </Button>
-            </div>
-            <div className={styles['article-footer']}>
-              <Icon type="folder" />{' '}<Link>Javascript</Link>&nbsp;&nbsp;
-              <Icon type="tags" />{' '}<Link>React</Link>
-            </div>
-          </Card>
-          <Card
-            title="shouldComponentUpdate及diff算法原理（转载）"
-            extra={
-              <span>
-                <Icon type="clock-circle-o" />
-                {' '}
-                发表于 2017-04-19 By
-                {' '}
-                <Link href="/about">Yin Feng</Link>
-              </span>
-            }
-            style={{
-              width: 900,
-              color: '#817c7c',
-              paddingTop: 20,
-              fontSize: 15,
+              paddingTop: 25,
+              fontSize: 5,
               marginTop: 20,
             }}
             bodyStyle={{ color: '#413f3f', fontSize: 20 }}
@@ -205,7 +56,7 @@ export default class HomePage extends React.Component {
         </Col>
         <Col span={5}>
           <Card
-            style={{ width: '95%', float: 'right', marginTop: 20, height: 66 }}
+            style={{ width: '90%', float: 'right', marginTop: 20, height: 66 }}
             bordered={false}
           >
             <img
@@ -222,7 +73,7 @@ export default class HomePage extends React.Component {
           <Card
             title="分类"
             extra={<Link href="/categories">More</Link>}
-            style={{ width: '95%', float: 'right', marginTop: 20, padding: 10 }}
+            style={{ width: '90%', float: 'right', marginTop: 20, padding: 10 }}
             bordered={false}
             bodyStyle={{ margin: '10px 0 0 10px' }}
           >
@@ -233,7 +84,7 @@ export default class HomePage extends React.Component {
           <Card
             title="归档"
             extra={<Link href="/categories">More</Link>}
-            style={{ width: '95%', float: 'right', marginTop: 20, padding: 10 }}
+            style={{ width: '90%', float: 'right', marginTop: 20, padding: 10 }}
             bordered={false}
             bodyStyle={{ margin: '10px 0 0 10px' }}
           >
@@ -243,7 +94,7 @@ export default class HomePage extends React.Component {
           </Card>
           <Card
             title="友情链接"
-            style={{ width: '95%', float: 'right', marginTop: 20, padding: 10 }}
+            style={{ width: '90%', float: 'right', marginTop: 20, padding: 10 }}
             bordered={false}
             bodyStyle={{ margin: '10px 0 0 10px' }}
           >

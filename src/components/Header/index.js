@@ -1,6 +1,7 @@
 import React from 'react';
 import { Menu, Row, Col, Icon, Button } from 'antd';
 import { Link } from 'dva/router';
+import MediaQuery from 'react-responsive';
 
 // import Login from '../Login';
 
@@ -48,40 +49,42 @@ export default class Header extends React.Component {
     return (
       <Row className={styles.container}>
         <Col span={1} />
-        <Col span={10}>
+        <Col span={9}>
           <Link href="/">
             <img src={logo} alt="logo" className={styles.logo} />
             <span className={styles.title}>和光同尘</span>
             <span className={styles.desc}>前端小白的学习笔记</span>
           </Link>
         </Col>
-        <Col span={12}>
-          <Menu
-            onClick={this.handleClick}
-            selectedKeys={[this.state.current]}
-            mode="horizontal"
-            theme="dark"
-            style={{
-              position: 'absolute',
-              bottom: '-140px',
-              fontSize: '15px',
-              right: 0,
-            }}
-          >
-            <Menu.Item key="home">
-              <Link to="/"><Icon type="appstore" />主页</Link>
-            </Menu.Item>
-            <Menu.Item key="archive">
-              <Link to="/archive"><Icon type="appstore" />归档</Link>
-            </Menu.Item>
-            <Menu.Item key="categories">
-              <Link to="/categories"><Icon type="appstore" />分类</Link>
-            </Menu.Item>
-            <Menu.Item key="about">
-              <Link to="/about"><Icon type="appstore" />关于我</Link>
-            </Menu.Item>
-            {userShow}
-          </Menu>
+        <Col span={13}>
+          <MediaQuery query="(min-device-width:1024px)">
+            <Menu
+              onClick={this.handleClick}
+              selectedKeys={[this.state.current]}
+              mode="horizontal"
+              theme="dark"
+              style={{
+                position: 'absolute',
+                bottom: '-140px',
+                fontSize: '15px',
+                right: 0,
+              }}
+            >
+              <Menu.Item key="home">
+                <Link to="/"><Icon type="appstore" />主页</Link>
+              </Menu.Item>
+              <Menu.Item key="archive">
+                <Link to="/archive"><Icon type="appstore" />归档</Link>
+              </Menu.Item>
+              <Menu.Item key="categories">
+                <Link to="/categories"><Icon type="appstore" />分类</Link>
+              </Menu.Item>
+              <Menu.Item key="about">
+                <Link to="/about"><Icon type="appstore" />关于我</Link>
+              </Menu.Item>
+              {userShow}
+            </Menu>
+          </MediaQuery>
         </Col>
         <Col span={1} />
       </Row>

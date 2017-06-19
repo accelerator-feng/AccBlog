@@ -11,9 +11,11 @@
 
 .pagination {
     position: relative;
-    left: 60%;
+    left: 50%;
 
     margin-top: 15px;
+
+    transform: translate(-15%);
 }
 .slider {
     display: inline-block;
@@ -28,11 +30,13 @@
     left: 30%;
 }
 
-.mask{
-  width: 66px;
-  height: 66px;
-  position: absolute;
-  top:0;
-  left:0;
-  background: rgba(0,0,0,0.1);
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 66px;
+    height: 66px;
+
+    background: rgba(0,0,0,.1);
 }
