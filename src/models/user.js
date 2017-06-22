@@ -1,4 +1,4 @@
-import fetch from '../../utils/request';
+import fetch from '../utils/request.js';
 
 export default {
   namespace: 'user',
@@ -19,8 +19,7 @@ export default {
         payload: { hasLogined: true, NickUserName: data.NickUserName },
       });
     },
-    *register({ payload }, { call, put }) {
-      // eslint-disable-line
+    *register({ payload }, { put }) {
       yield put({ type: 'save' });
     },
   },

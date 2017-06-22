@@ -9,5 +9,5 @@ export default {
   // ...music,
   // ...movie,
   // ...comment,
-  // ...article,
+  ...article,
 };

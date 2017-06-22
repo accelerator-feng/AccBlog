@@ -27,4 +27,8 @@ body,
 
 :global(.ant-card-body) {
     padding: 0 !important;
-};
+}
+
+:global(a){
+  text-decoration: none !important;
+}

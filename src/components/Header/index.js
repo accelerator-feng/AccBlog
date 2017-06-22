@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Row, Col, Icon, Button } from 'antd';
+import { Menu, Row, Col, Icon, Button, Dropdown } from 'antd';
 import { Link } from 'dva/router';
 import MediaQuery from 'react-responsive';
 
@@ -26,38 +26,52 @@ export default class Header extends React.Component {
     }
   };
 
-  handleLogout = e => {
+  handleLogout = () => {
     this.props.dispatch({
       type: 'user/logout',
     });
   };
 
   render() {
-    const { hasLogined, NickUserName } = this.props,
-      userShow = hasLogined
-        ? <Menu.Item key="logout">
-            <Button type="primary">
-              {NickUserName}
-            </Button>
-            <Button onClick={this.handleLogout}>
-              退出
-            </Button>
-          </Menu.Item>
-        : <Menu.Item key="login">
-            <Icon type="login" />注册/登陆
-          </Menu.Item>;
+    const { hasLogined, NickUserName } = this.props;
+    const userShow = hasLogined
+      ? <Menu.Item key="logout">
+          <Button type="primary">
+            {NickUserName}
+          </Button>
+          <Button onClick={this.handleLogout}>
+            退出
+          </Button>
+        </Menu.Item>
+      : <Menu.Item key="login">
+          <Icon type="login" />注册/登陆
+        </Menu.Item>;
+    const menu = (
+      <Menu>
+        <Menu.Item key="archive">
+          <Link to="/archive">归档</Link>
+        </Menu.Item>
+        <Menu.Item key="categories">
+          <Link to="/categories">分类</Link>
+        </Menu.Item>
+        <Menu.Item key="about">
+          <Link to="/about">关于我</Link>
+        </Menu.Item>
+      </Menu>
+    );
+    const title = (
+      <Link href="/">
+        <img src={logo} alt="logo" className={styles.logo} />
+        <span className={styles.title}>和光同尘</span>
+        <span className={styles.desc}>前端小白的学习笔记</span>
+      </Link>
+    );
     return (
       <Row className={styles.container}>
-        <Col span={1} />
-        <Col span={9}>
-          <Link href="/">
-            <img src={logo} alt="logo" className={styles.logo} />
-            <span className={styles.title}>和光同尘</span>
-            <span className={styles.desc}>前端小白的学习笔记</span>
-          </Link>
-        </Col>
-        <Col span={13}>
-          <MediaQuery query="(min-device-width:1024px)">
+        <MediaQuery query="(min-device-width:800px)">
+          <Col span={1} />
+          <Col span={9}>{title}</Col>
+          <Col span={13}>
             <Menu
               onClick={this.handleClick}
               selectedKeys={[this.state.current]}
@@ -84,9 +98,21 @@ export default class Header extends React.Component {
               </Menu.Item>
               {userShow}
             </Menu>
-          </MediaQuery>
-        </Col>
-        <Col span={1} />
+          </Col>
+          <Col span={1} />
+        </MediaQuery>
+        <MediaQuery query="(max-device-width:800px)">
+          <Col span={18}>
+            {title}
+          </Col>
+          <Col span={6}>
+            <Dropdown.Button overlay={menu}>
+              <Link to="/">
+                主页
+              </Link>
+            </Dropdown.Button>
+          </Col>
+        </MediaQuery>
       </Row>
     );
   }
