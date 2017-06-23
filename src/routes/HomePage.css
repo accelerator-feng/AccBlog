@@ -1,14 +1,3 @@
-.article-content {
-    border-bottom: 1px solid #eee;
-    padding: 10px 30px;
-
-    line-height: 50px;
-}
-
-.article-footer {
-    padding: 10px 30px;
-}
-
 .pagination {
     position: relative;
     left: 50%;

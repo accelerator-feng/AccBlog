@@ -1,33 +1,17 @@
 import dva from 'dva';
-import createLoading from 'dva-loading';
-import { browserHistory } from 'dva/router';
+import { useRouterHistory } from 'dva/router';
+import { createHashHistory } from 'history';
+
 import './index.css';
 
 // 1. Initialize
 const app = dva({
-  history: browserHistory,
+  history: useRouterHistory(createHashHistory)({ queryKey: false }),
 });
 
 // 2. Plugins
 // app.use({});
-app.use(
-  createLoading({
-    loading: {
-      global: false,
-      models: {
-        users: false,
-        music: false,
-        movies: false,
-        articles: false,
-        bind: false,
-        auth: false,
-        personal: false,
-        home: false,
-        chat: false,
-      },
-    },
-  }),
-);
+app.use({});
 
 // 3. Model
 app.model(require('./models/user'));

@@ -3,16 +3,14 @@ import fetch from '../utils/request';
 export default {
   namespace: 'article',
 
-  state: {
-    articles: [],
-  },
+  state: {},
 
   effects: {
     *fetch({ payload }, { call, put }) {
-      const { data } = yield call(fetch, `api/page/${payload}`);
+      const { data } = yield call(fetch, `api/article/page/${payload}`);
       yield put({
         type: 'load',
-        payload: { articles: data.articles },
+        payload: data,
       });
     },
   },

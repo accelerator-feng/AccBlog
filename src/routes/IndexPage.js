@@ -36,7 +36,14 @@ class IndexPage extends React.Component {
         <MediaQuery query="(min-device-width:800px)">
           <a href="https://github.com/accelerator-feng">
             <img
-              style={{ position: 'absolute', top: 0, right: 0, border: 0 }}
+              style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                border: 0,
+                width: 135,
+                height: 135,
+              }}
               src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
               alt="Fork me on GitHub"
             />
