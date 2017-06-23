@@ -1,0 +1,23 @@
+.slider {
+    display: inline-block;
+
+    margin: 5px 12px;
+    width: 60%;
+}
+
+.music-info {
+    position: absolute;
+    top: 25%;
+    left: 30%;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 66px;
+    height: 66px;
+
+    background: rgba(0,0,0,.1);
+}
