@@ -1,4 +1,4 @@
-.article-summary {
+.summary {
     border-bottom: 1px solid #eee;
     padding: 10px 30px;
 
@@ -6,6 +6,6 @@
 }
 
 
-.article-footer {
+.footer {
     padding: 10px 30px;
 }

@@ -32,7 +32,7 @@ export default function ArticleCard(props) {
                 }}
                 bodyStyle={{ color: '#413f3f', fontSize: 20 }}
               >
-                <div className={styles['article-summary']}>
+                <div className={styles.summary}>
                   <div>{article.summary}</div>
                   <Link href={`/article/${id}`}>
                     <Button
@@ -46,7 +46,7 @@ export default function ArticleCard(props) {
                     </Button>
                   </Link>
                 </div>
-                <div className={styles['article-footer']}>
+                <div className={styles.footer}>
                   {article.category &&
                     <span>
                       <Icon type="folder" />

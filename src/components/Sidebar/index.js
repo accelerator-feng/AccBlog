@@ -4,6 +4,8 @@ import { Card } from 'antd';
 import { Link } from 'dva/router';
 import Music from '../Music';
 
+import styles from './index.css';
+
 class Sidebar extends React.Component {
   render() {
     const { categoryMap } = this.props;
@@ -11,8 +13,12 @@ class Sidebar extends React.Component {
     if (categoryMap) {
       for (const [category, mount] of Object.entries(categoryMap)) {
         categories.push(
-          <Link href={`/categories/${category}`} key={category}>
-            <p>{category} {`(${mount})`}</p>
+          <Link
+            href={`/categories/${category}`}
+            key={category}
+            class={styles.link}
+          >
+            <p style={{ color: '#817c7c' }}>{category} {`(${mount})`}</p>
           </Link>,
         );
       }
