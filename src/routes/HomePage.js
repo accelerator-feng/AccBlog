@@ -1,18 +1,16 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Card, Row, Col, Pagination } from 'antd';
-import { Link } from 'dva/router';
+import { Row, Col, Pagination } from 'antd';
 import MediaQuery from 'react-responsive';
 import ArticleCard from '../components/ArticleCard';
-import Music from '../components/Music';
+import Sidebar from '../components/Sidebar';
 
 import styles from './HomePage.css';
 
 class HomePage extends React.Component {
   componentDidMount() {
     this.props.dispatch({
-      type: 'article/fetch',
-      payload: 1,
+      type: 'article/init',
     });
   }
   handleChange = page => {
@@ -39,54 +37,7 @@ class HomePage extends React.Component {
             />
           </Col>
           <Col span={5}>
-            <Music />
-            <Card
-              title="分类"
-              extra={<Link href="/categories">More</Link>}
-              style={{
-                width: '90%',
-                float: 'right',
-                marginTop: 20,
-                padding: 10,
-              }}
-              bordered={false}
-              bodyStyle={{ margin: '10px 0 0 10px' }}
-            >
-              <Link><p>Card content</p></Link>
-              <Link><p>Card content</p></Link>
-              <Link><p>Card content</p></Link>
-            </Card>
-            <Card
-              title="归档"
-              extra={<Link href="/categories">More</Link>}
-              style={{
-                width: '90%',
-                float: 'right',
-                marginTop: 20,
-                padding: 10,
-              }}
-              bordered={false}
-              bodyStyle={{ margin: '10px 0 0 10px' }}
-            >
-              <Link><p>Card content</p></Link>
-              <Link><p>Card content</p></Link>
-              <Link><p>Card content</p></Link>
-            </Card>
-            <Card
-              title="友情链接"
-              style={{
-                width: '90%',
-                float: 'right',
-                marginTop: 20,
-                padding: 10,
-              }}
-              bordered={false}
-              bodyStyle={{ margin: '10px 0 0 10px' }}
-            >
-              <Link><p>Card content</p></Link>
-              <Link><p>Card content</p></Link>
-              <Link><p>Card content</p></Link>
-            </Card>
+            <Sidebar />
           </Col>
         </MediaQuery>
         <Col span={1} />

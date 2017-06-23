@@ -48,7 +48,7 @@ export default class Header extends React.Component {
         </Menu.Item>;
     const menu = (
       <Menu>
-        <Menu.Item key="archive">
+        <Menu.Item key="archives">
           <Link to="/archive">归档</Link>
         </Menu.Item>
         <Menu.Item key="categories">

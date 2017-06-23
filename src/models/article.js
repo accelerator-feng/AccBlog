@@ -6,6 +6,14 @@ export default {
   state: {},
 
   effects: {
+    *init({ payload }, { call, put }) {
+      const { data } = yield call(fetch, 'api/init');
+      console.log(data);
+      yield put({
+        type: 'load',
+        payload: data,
+      });
+    },
     *fetch({ payload }, { call, put }) {
       const { data } = yield call(fetch, `api/article/page/${payload}`);
       yield put({

@@ -26,7 +26,7 @@ export default function ArticleCard(props) {
                 }
                 style={{
                   color: '#817c7c',
-                  paddingTop: 25,
+                  paddingTop: 10,
                   fontSize: 5,
                   marginTop: 20,
                 }}
