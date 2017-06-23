@@ -34,13 +34,7 @@
   "env": {
     "development": {
       "extraBabelPlugins": [
-        "dva-hmr",
-        "transform-runtime"
-      ]
-    },
-    "production": {
-      "extraBabelPlugins": [
-        "transform-runtime"
+        "dva-hmr"
       ]
     }
   }
