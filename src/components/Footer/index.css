@@ -8,6 +8,8 @@
 }
 
 .container {
+    position: relative;
+
     margin-top: 16px;
     padding: 0 26px 8px 26px;
     height: 248px;
@@ -16,7 +18,6 @@
 }
 
 .author {
-   transform: translate(-50%);
     border-radius: 50%;
     width: 110px;
     height: 110px;
@@ -25,6 +26,7 @@
     background-size: 100% 100%;
 
     transition: transform 2s ease-out;
+    transform: translate(-50%);
 }
 
 .author:hover {
@@ -34,8 +36,6 @@
 .line {
     display: block;
 
-
-
     width: 2px;
     height: 80px;
 
@@ -43,8 +43,6 @@
 }
 
 .title {
-
-
     position: absolute;
     top: 50%;
     left: 25%;
@@ -106,20 +104,24 @@
 
 .social-font {
     position: absolute;
-    top: 70px;
-    right: 0;
+    top: 95px;
+    right: 12px;
+
+    width: 204px;
 }
 .copyright {
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     left: 50%;
+
+    width: 278px;
 
     font-family: "Verdana";
     font-size: 13px;
 
     color: #fff;
 
-    transform: translate(-50%,-60%);
+    transform: translate(-50%);
 }
 .copyright-link {
     color: #2ca6cb;
@@ -128,3 +130,23 @@
 .copyright-link:hover {
     text-decoration: underline !important;
 }
+
+.mtitle {
+    margin: 10px 0;
+
+    font-size: 20px;
+    text-align: center;
+
+    color: #fff;
+}
+
+.mdesc {
+    margin: 0 auto;
+    width: 230px;
+
+    font-size: 20px;
+    text-align: center;
+
+    color: #fff;
+}
+

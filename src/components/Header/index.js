@@ -14,7 +14,7 @@ export default class Header extends React.Component {
     this.state = { current: 'look' };
   }
 
-  handleClick = (e) => {
+  handleClick = e => {
     this.setState({
       current: e.key,
     });
@@ -35,19 +35,22 @@ export default class Header extends React.Component {
   render() {
     const { hasLogined, NickUserName } = this.props;
     const userShow = hasLogined
-      ? (<Menu.Item key="logout">
-        <Button type="primary">
-          {NickUserName}
-        </Button>
-        <Button onClick={this.handleLogout}>
+      ? <Menu.Item key="logout">
+          <Button type="primary">
+            {NickUserName}
+          </Button>
+          <Button onClick={this.handleLogout}>
             退出
           </Button>
-      </Menu.Item>)
-      : (<Menu.Item key="login">
-        <Icon type="login" />注册/登陆
-        </Menu.Item>);
+        </Menu.Item>
+      : <Menu.Item key="login">
+          <Icon type="login" />注册/登陆
+        </Menu.Item>;
     const menu = (
       <Menu>
+        <Menu.Item key="index">
+          <Link to="/">主页</Link>
+        </Menu.Item>
         <Menu.Item key="archives">
           <Link to="/archives">归档</Link>
         </Menu.Item>
@@ -87,14 +90,14 @@ export default class Header extends React.Component {
               <Menu.Item key="home">
                 <Link to="/"><Icon type="appstore" />主页</Link>
               </Menu.Item>
-              <Menu.Item key="archive">
-                <Link to="/archive"><Icon type="appstore" />归档</Link>
+              <Menu.Item key="archives">
+                <Link to="/archives"><Icon type="appstore" />归档</Link>
               </Menu.Item>
               <Menu.Item key="categories">
                 <Link to="/categories"><Icon type="appstore" />分类</Link>
               </Menu.Item>
               <Menu.Item key="about">
-                <Link to="/about"><Icon type="appstore" />关于我</Link>
+                <Link to="/about"><Icon type="appstore" />关于</Link>
               </Menu.Item>
               {userShow}
             </Menu>
@@ -107,11 +110,9 @@ export default class Header extends React.Component {
             {title}
           </Col>
           <Col span={5}>
-            <Dropdown.Button overlay={menu} className={styles.menu}>
-              <Link to="/">
-                主页
-              </Link>
-            </Dropdown.Button>
+            <Dropdown overlay={menu} placement="bottomRight">
+              <Icon type="menu-fold" className={styles.menu} />
+            </Dropdown>
           </Col>
           <Col span={1} />
         </MediaQuery>

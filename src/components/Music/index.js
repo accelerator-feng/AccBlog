@@ -22,7 +22,7 @@ export default class index extends React.Component {
         />
         <div className={styles.mask} />
         <span className={styles['music-info']}>
-          <Switch size="small" defaultChecked={false} /> 牵丝戏 - 银临/Aki阿杰
+          <Switch size="small" defaultChecked={false} /> 江南 - 林俊杰
         </span>
         <Slider className={styles.slider} />
       </Card>

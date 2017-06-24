@@ -4,7 +4,7 @@ import { Card, Row, Col } from 'antd';
 
 export default class Archives extends React.Component {
   componentDidMount() {
-    document.title = '归档 | 和光同尘';
+    document.title = '关于 | 和光同尘';
   }
   render() {
     return (

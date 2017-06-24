@@ -50,58 +50,62 @@ export default function Footer() {
     </div>
   );
   return (
-    <Row className={styles.container}>
-      <MediaQuery query="(min-device-width:750px)">
-        <Col span={2} />
-        <Col span={12}>
-          <sapn className={styles.line} />
-          <div className={styles.author} />
-          <span className={styles.title}>未来的前端攻城狮</span>
-          <span className={styles.desc}>Stay hungry. Stay foolish.</span>
-        </Col>
-        <Col span={8}>
-          {socialFont}
-        </Col>
-        <Col span={2} />
-        <div className={styles.copyright}>
-          Powered by
-          {' '}
-          <a
-            href="https://github.com/dvajs/dva"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="dva.js"
-            className={styles['copyright-link']}
-          >
-            dva
-          </a>
-          {' '}
-          and
-          {' '}
-          <a
-            href="https://eggjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Egg.js"
-            className={styles['copyright-link']}
-          >
-            Egg
-          </a>
-          {' '}
-          © 2017
-          {' '}
-          <Link href="/about" className={styles['copyright-link']}>
-            Yin Feng
-          </Link>
-        </div>
-      </MediaQuery>
-      <MediaQuery query="(max-device-width:750px)">
-        <Col span={4} />
-        <Col span={16}>
-          {socialFont}
-        </Col>
-        <Col span={4} />
-      </MediaQuery>
-    </Row>
+    <div className={styles.container}>
+      <Row>
+        <MediaQuery query="(min-device-width:750px)">
+          <Col span={2} />
+          <Col span={12}>
+            <sapn className={styles.line} />
+            <div className={styles.author} />
+            <span className={styles.title}>未来的前端攻城狮</span>
+            <span className={styles.desc}>Stay hungry. Stay foolish.</span>
+          </Col>
+          <Col span={8}>
+            {socialFont}
+          </Col>
+          <Col span={2} />
+        </MediaQuery>
+        <MediaQuery query="(max-device-width:750px)">
+          <Col span={4} />
+          <Col span={16}>
+            <div className={styles.mtitle}>未来的前端攻城狮</div>
+            <div className={styles.mdesc}>Stay hungry. Stay foolish.</div>
+            {socialFont}
+          </Col>
+          <Col span={4} />
+        </MediaQuery>
+      </Row>
+      <div className={styles.copyright}>
+        Powered by
+        {' '}
+        <a
+          href="https://github.com/dvajs/dva"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="dva.js"
+          className={styles['copyright-link']}
+        >
+          dva
+        </a>
+        {' '}
+        and
+        {' '}
+        <a
+          href="https://eggjs.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Egg.js"
+          className={styles['copyright-link']}
+        >
+          Egg
+        </a>
+        {' '}
+        © 2017
+        {' '}
+        <Link href="/about" className={styles['copyright-link']}>
+          Yin Feng
+        </Link>
+      </div>
+    </div>
   );
 }

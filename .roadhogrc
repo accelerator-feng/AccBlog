@@ -15,7 +15,14 @@
     ]
   ],
   "extraPostCSSPlugins": [],
-  "autoprefixer": null,
+  "autoprefixer": {
+    "browsers": [
+      "> 5%",
+      "last 2 versions",
+      "iOS >= 8",
+      "Android >= 4"
+    ]
+  },
   "proxy": {
     "/api": {
       "target": "http://localhost:7001",

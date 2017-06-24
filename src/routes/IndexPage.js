@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { BackTop } from 'antd';
+import { BackTop, message } from 'antd';
 import MediaQuery from 'react-responsive';
 
 import Header from '../components/Header';
@@ -10,6 +10,9 @@ import Footer from '../components/Footer';
 import styles from './IndexPage.css';
 
 class IndexPage extends React.Component {
+  componentWillMount() {
+    message.success('欢迎来到和光同尘的博客', 1);
+  }
   render() {
     const {
       children,
@@ -54,7 +57,7 @@ class IndexPage extends React.Component {
   }
 }
 
-export default connect((state) => {
+export default connect(state => {
   return {
     isModalVisible: state.user.isModalVisible,
     hasLogined: state.user.hasLogined,

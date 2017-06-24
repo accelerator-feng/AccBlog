@@ -9,6 +9,7 @@ import styles from './HomePage.css';
 
 class HomePage extends React.Component {
   componentDidMount() {
+    document.title = '和光同尘 | 前端小白';
     this.props.dispatch({
       type: 'article/init',
     });
@@ -59,7 +60,7 @@ class HomePage extends React.Component {
   }
 }
 
-export default connect((state) => {
+export default connect(state => {
   return {
     articles: state.article.articles,
     total: state.article.total,

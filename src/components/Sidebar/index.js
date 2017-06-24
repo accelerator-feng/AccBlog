@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Card } from 'antd';
+import { Card, Calendar } from 'antd';
 import { Link } from 'dva/router';
 import Music from '../Music';
 
@@ -40,6 +40,18 @@ class Sidebar extends React.Component {
     return (
       <div>
         <Music />
+        <div
+          style={{
+            width: '90%',
+            border: '1px solid #fff',
+            borderRadius: 4,
+            float: 'right',
+            marginTop: 10,
+            background: '#fff',
+          }}
+        >
+          <Calendar fullscreen={false} />
+        </div>
         <Card
           title="分类"
           extra={<Link href="/categories">More</Link>}
@@ -97,7 +109,7 @@ class Sidebar extends React.Component {
   }
 }
 
-export default connect((state) => {
+export default connect(state => {
   return {
     categoryMap: state.article.categoryMap,
     archiveMap: state.article.archiveMap,
