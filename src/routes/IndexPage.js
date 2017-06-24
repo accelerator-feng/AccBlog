@@ -54,7 +54,7 @@ class IndexPage extends React.Component {
   }
 }
 
-export default connect(state => {
+export default connect((state) => {
   return {
     isModalVisible: state.user.isModalVisible,
     hasLogined: state.user.hasLogined,

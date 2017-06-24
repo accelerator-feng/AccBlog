@@ -17,7 +17,7 @@ class MyModal extends React.Component {
     };
   }
 
-  handleTabChange = key => {
+  handleTabChange = (key) => {
     this.props.form.resetFields();
     this.action = key === 'login' ? 'login' : 'register';
   };
@@ -41,7 +41,7 @@ class MyModal extends React.Component {
     callback();
   };
 
-  handleConfirmBlur = e => {
+  handleConfirmBlur = (e) => {
     const value = e.target.value;
     this.setState({
       confirmDirty: this.state.confirmDirty || !!value,
@@ -56,11 +56,11 @@ class MyModal extends React.Component {
     this.props.form.resetFields();
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    const { field, action, props } = this,
-      formData = props.form.getFieldsValue();
-    props.form.validateFields(field[action], {}, err => {
+    const { field, action, props } = this;
+    const formData = props.form.getFieldsValue();
+    props.form.validateFields(field[action], {}, (err) => {
       if (!err) {
         props.dispatch({
           type: `user/${action}`,
@@ -185,4 +185,6 @@ class MyModal extends React.Component {
   }
 }
 
-export default (MyModal = Form.create()(MyModal));
+const WrappedMyModal = Form.create()(MyModal);
+
+export default WrappedMyModal;

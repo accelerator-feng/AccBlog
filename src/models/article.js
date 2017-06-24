@@ -7,24 +7,23 @@ export default {
 
   effects: {
     *init({ payload }, { call, put }) {
-      const { data } = yield call(fetch, 'api/init');
-      console.log(data);
+      const { data } = yield call(fetch, 'api/index');
       yield put({
-        type: 'load',
+        type: 'save',
         payload: data,
       });
     },
     *fetch({ payload }, { call, put }) {
       const { data } = yield call(fetch, `api/article/page/${payload}`);
       yield put({
-        type: 'load',
+        type: 'save',
         payload: data,
       });
     },
   },
 
   reducers: {
-    load(state, action) {
+    save(state, action) {
       return { ...state, ...action.payload };
     },
   },

@@ -40,13 +40,26 @@ class HomePage extends React.Component {
             <Sidebar />
           </Col>
         </MediaQuery>
+        <MediaQuery query="(max-device-width:800px)">
+          <Col span={22}>
+            <ArticleCard articles={articles} />
+            <Pagination
+              showQuickJumper
+              defaultCurrent={1}
+              defaultPageSize={5}
+              total={total}
+              onChange={this.handleChange}
+              className={styles.pagination}
+            />
+          </Col>
+        </MediaQuery>
         <Col span={1} />
       </Row>
     );
   }
 }
 
-export default connect(state => {
+export default connect((state) => {
   return {
     articles: state.article.articles,
     total: state.article.total,

@@ -14,7 +14,7 @@ export default class Header extends React.Component {
     this.state = { current: 'look' };
   }
 
-  handleClick = e => {
+  handleClick = (e) => {
     this.setState({
       current: e.key,
     });
@@ -35,21 +35,21 @@ export default class Header extends React.Component {
   render() {
     const { hasLogined, NickUserName } = this.props;
     const userShow = hasLogined
-      ? <Menu.Item key="logout">
-          <Button type="primary">
-            {NickUserName}
-          </Button>
-          <Button onClick={this.handleLogout}>
+      ? (<Menu.Item key="logout">
+        <Button type="primary">
+          {NickUserName}
+        </Button>
+        <Button onClick={this.handleLogout}>
             退出
           </Button>
-        </Menu.Item>
-      : <Menu.Item key="login">
-          <Icon type="login" />注册/登陆
-        </Menu.Item>;
+      </Menu.Item>)
+      : (<Menu.Item key="login">
+        <Icon type="login" />注册/登陆
+        </Menu.Item>);
     const menu = (
       <Menu>
         <Menu.Item key="archives">
-          <Link to="/archive">归档</Link>
+          <Link to="/archives">归档</Link>
         </Menu.Item>
         <Menu.Item key="categories">
           <Link to="/categories">分类</Link>
@@ -102,16 +102,18 @@ export default class Header extends React.Component {
           <Col span={1} />
         </MediaQuery>
         <MediaQuery query="(max-device-width:800px)">
-          <Col span={18}>
+          <Col span={1} />
+          <Col span={17}>
             {title}
           </Col>
-          <Col span={6}>
-            <Dropdown.Button overlay={menu}>
+          <Col span={5}>
+            <Dropdown.Button overlay={menu} className={styles.menu}>
               <Link to="/">
                 主页
               </Link>
             </Dropdown.Button>
           </Col>
+          <Col span={1} />
         </MediaQuery>
       </Row>
     );

@@ -18,7 +18,13 @@ body,
     bottom: 100px;
 }
 
+:global(.ant-card-head) {
+    font-size: 40px;
+    line-height: 40px;
+}
 :global(.ant-card-head-title) {
+    width: 73% !important;
+
     font-size: 25px !important;
     font-weight: 400 !important;
 
@@ -29,6 +35,6 @@ body,
     padding: 0 !important;
 }
 
-:global(a){
-  text-decoration: none !important;
+:global(a) {
+    text-decoration: none !important;
 }

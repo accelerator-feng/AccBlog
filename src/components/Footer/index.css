@@ -54,8 +54,6 @@
     color: #fff;
 }
 .desc {
-
-
     position: absolute;
     top: 70%;
     left: 20%;
@@ -127,3 +125,6 @@
     color: #2ca6cb;
 }
 
+.copyright-link:hover {
+    text-decoration: underline !important;
+}

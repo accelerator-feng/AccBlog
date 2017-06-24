@@ -1,14 +1,21 @@
 .slider {
     display: inline-block;
 
-    margin: 5px 12px;
-    width: 60%;
+    margin: 5px 10%;
+    width: 45%;
 }
 
 .music-info {
+    overflow: hidden;
+
     position: absolute;
     top: 25%;
-    left: 30%;
+    left: 35%;
+
+    width: 60%;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .mask {

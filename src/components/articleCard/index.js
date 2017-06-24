@@ -1,5 +1,6 @@
 import { Card, Icon, Button } from 'antd';
 import { Link } from 'dva/router';
+import MediaQuery from 'react-responsive';
 
 import styles from './index.css';
 
@@ -14,19 +15,27 @@ export default function ArticleCard(props) {
             return (
               <Card
                 key={id}
-                title={<Link href={`/article/${id}`}>{article.title}</Link>}
+                title={
+                  <Link href={`/article/${id}`} className={styles.link}>
+                    {article.title}
+                  </Link>
+                }
                 extra={
-                  <span>
-                    <Icon type="clock-circle-o" />
-                    {' '}
-                    发表于 {article.time} By
-                    {' '}
-                    <Link href="/about">{article.author}</Link>
-                  </span>
+                  <MediaQuery query="(min-device-width:700px)">
+                    <span>
+                      <Icon type="clock-circle-o" />
+                      {' '}
+                      发表于 {article.time} By
+                      {' '}
+                      <Link href="/about" className={styles.link}>
+                        {article.author}
+                      </Link>
+                    </span>
+                  </MediaQuery>
                 }
                 style={{
                   color: '#817c7c',
-                  paddingTop: 10,
+                  paddingTop: 5,
                   fontSize: 5,
                   marginTop: 20,
                 }}
@@ -35,13 +44,7 @@ export default function ArticleCard(props) {
                 <div className={styles.summary}>
                   <div>{article.summary}</div>
                   <Link href={`/article/${id}`}>
-                    <Button
-                      style={{
-                        background: '#ddd',
-                        color: '#817c7c',
-                        borderRadius: '14px',
-                      }}
-                    >
+                    <Button className={styles.btn}>
                       Read More
                     </Button>
                   </Link>
@@ -49,18 +52,25 @@ export default function ArticleCard(props) {
                 <div className={styles.footer}>
                   {article.category &&
                     <span>
-                      <Icon type="folder" />
+                      <Icon type="folder" style={{ color: '#ccc' }} />
                       {' '}
-                      <Link href={`/categories/${article.category}`}>
+                      <Link
+                        href={`/categories/${article.category}`}
+                        className={styles.category}
+                      >
                         {article.category}
                       </Link>&nbsp;&nbsp;
                     </span>}
                   {article.tags.length > 0 &&
                     <span>
-                      <Icon type="tags" />
+                      <Icon type="tags" style={{ color: '#ccc' }} />
                       {' '}
                       {article.tags.map((tag, i) => (
-                        <Link key={i} href={`/tags/${tag}`}>
+                        <Link
+                          key={i}
+                          href={`/tags/${tag}`}
+                          className={styles.tag}
+                        >
                           {tag}{' '}
                         </Link>
                       ))}
