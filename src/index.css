@@ -35,6 +35,6 @@ body,
     padding: 0 !important;
 }
 
-:global(a) {
-    text-decoration: none !important;
+:global(pre) {
+    white-space: pre-wrap;
 }

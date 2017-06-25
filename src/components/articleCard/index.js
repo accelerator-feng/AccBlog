@@ -11,13 +11,14 @@ export default function ArticleCard(props) {
     <div>
       {articles && articles.length > 0
         ? articles.map(article => {
-            const len = article._id.length;
-            const id = article._id.slice(len - 3);
             return (
               <Card
-                key={id}
+                key={article._id}
                 title={
-                  <Link href={`/article/${id}`} className={styles.link}>
+                  <Link
+                    href={`/article/${article._id}`}
+                    className={styles.link}
+                  >
                     {article.title}
                   </Link>
                 }
@@ -44,7 +45,7 @@ export default function ArticleCard(props) {
               >
                 <div className={styles.summary}>
                   <div>{article.summary}</div>
-                  <Link href={`/article/${id}`}>
+                  <Link href={`/article/${article._id}`}>
                     <Button className={styles.btn}>
                       Read More
                     </Button>
