@@ -83,7 +83,8 @@ class MyModal extends React.Component {
           <Button size="large" onClick={this.handleCancel}>
             关闭
           </Button>,
-        ]}>
+        ]}
+      >
         <Tabs type="card" onChange={this.handleTabChange}>
           {/*                 注册                    */}
           <TabPane key="register" tab="注册">

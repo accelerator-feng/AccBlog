@@ -58,7 +58,7 @@ export default class Header extends React.Component {
           <Link to="/categories">分类</Link>
         </Menu.Item>
         <Menu.Item key="about">
-          <Link to="/about">关于我</Link>
+          <Link to="/about">关于</Link>
         </Menu.Item>
       </Menu>
     );

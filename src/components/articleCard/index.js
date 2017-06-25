@@ -1,3 +1,4 @@
+import React from 'react';
 import { Card, Icon, Button } from 'antd';
 import { Link } from 'dva/router';
 import MediaQuery from 'react-responsive';
@@ -9,7 +10,7 @@ export default function ArticleCard(props) {
   return (
     <div>
       {articles && articles.length > 0
-        ? articles.map((article, index) => {
+        ? articles.map(article => {
             const len = article._id.length;
             const id = article._id.slice(len - 3);
             return (

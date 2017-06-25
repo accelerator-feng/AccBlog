@@ -2,11 +2,28 @@ import React from 'react';
 import { connect } from 'dva';
 import { Card, Calendar } from 'antd';
 import { Link } from 'dva/router';
-import Music from '../Music';
+// import Music from '../Music';
 
 import styles from './index.css';
 
 class Sidebar extends React.Component {
+  getMonthData = value => {
+    if (value.year() === 2017 && (value.month() === 7 || value.month() === 6)) {
+      return '蚂蚁实习';
+    }
+    if (value.year() === 2017 && value.month() === 8) {
+      return '秋季校招';
+    }
+  };
+  monthCellRender = value => {
+    const plan = this.getMonthData(value);
+    return plan
+      ? <div style={{ textAlign: 'center' }}>
+          <section>{plan}</section>
+        </div>
+      : null;
+  };
+
   render() {
     const { categoryMap, archiveMap, linkMap } = this.props;
     const categories = [];
@@ -39,18 +56,21 @@ class Sidebar extends React.Component {
     }
     return (
       <div>
-        <Music />
         <div
           style={{
             width: '90%',
             border: '1px solid #fff',
             borderRadius: 4,
             float: 'right',
-            marginTop: 10,
+            marginTop: 20,
             background: '#fff',
           }}
         >
-          <Calendar fullscreen={false} />
+          <Calendar
+            fullscreen={false}
+            monthCellRender={this.monthCellRender}
+            mode="year"
+          />
         </div>
         <Card
           title="分类"
