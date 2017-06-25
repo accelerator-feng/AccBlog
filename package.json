@@ -21,6 +21,8 @@
     "dva-loading": "^0.2.1",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
+    "react-markdown": "^2.5.0",
+    "react-quill": "^1.0.0-rc.3",
     "react-responsive": "^1.3.0",
     "socket.io-client": "^2.0.3"
   },
