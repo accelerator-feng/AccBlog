@@ -20,7 +20,7 @@ export default {
       const { data } = yield call(fetch, `/api/show/${payload}`);
       yield put({
         type: 'save',
-        payload: { article: data },
+        payload: data,
       });
     },
     *fetch({ payload }, { call, put }) {

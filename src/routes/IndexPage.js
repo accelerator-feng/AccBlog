@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { BackTop, message } from 'antd';
+import { BackTop } from 'antd';
 import MediaQuery from 'react-responsive';
 
 import Header from '../components/Header';
@@ -10,9 +10,6 @@ import Footer from '../components/Footer';
 import styles from './IndexPage.css';
 
 class IndexPage extends React.Component {
-  componentWillMount() {
-    message.success('欢迎来到和光同尘的博客', 1);
-  }
   render() {
     const {
       children,

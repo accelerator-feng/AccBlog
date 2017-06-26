@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Row, Col, Pagination } from 'antd';
+import { Row, Col, Pagination, message } from 'antd';
 import MediaQuery from 'react-responsive';
 import ArticleCard from '../components/ArticleCard';
 import Sidebar from '../components/Sidebar';
@@ -10,6 +10,7 @@ import styles from './HomePage.css';
 class HomePage extends React.Component {
   componentDidMount() {
     document.title = '和光同尘 | 前端小白';
+    message.success('欢迎来到和光同尘的博客', 1);
     this.props.dispatch({
       type: 'article/init',
     });
