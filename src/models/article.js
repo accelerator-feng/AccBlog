@@ -7,10 +7,20 @@ export default {
 
   effects: {
     *init({ payload }, { call, put }) {
-      const { data } = yield call(fetch, 'api/index');
+      const { data } = yield call(fetch, '/api/index');
       yield put({
         type: 'save',
         payload: data,
+      });
+    },
+    *show({ payload }, { call, put }) {
+      yield put({
+        type: 'init',
+      });
+      const { data } = yield call(fetch, `/api/show/${payload}`);
+      yield put({
+        type: 'save',
+        payload: { article: data },
       });
     },
     *fetch({ payload }, { call, put }) {

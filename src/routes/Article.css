@@ -1,3 +1,42 @@
 .link:hover {
     color: #ea6753;
 }
+
+.footer {
+    padding: 10px 30px;
+}
+
+.category {
+    padding: 3px;
+
+    font-size: 16px;
+}
+.category:hover {
+    color: #fff;
+    background: #2ca6cb;
+}
+
+.tag {
+    padding: 3px;
+
+    font-size: 16px;
+
+    background: rgb(230,230,230);
+}
+.tag:hover {
+    color: #fff;
+    background: #2ca6cb;
+}
+
+.content {
+    border-bottom: 1px solid #eee;
+    padding: 10px 30px;
+}
+
+.title{
+  font-size: 30px !important;
+}
+
+.summary{
+  padding: 30px 30px 20px;
+}

@@ -35,6 +35,7 @@
     }
   },
   "globals": {
-    "document": true
+    "document": true,
+    "hljs": true,
   }
 }
