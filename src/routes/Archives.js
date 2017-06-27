@@ -7,6 +7,7 @@ import styles from './Archives.css';
 class Archives extends React.Component {
   componentDidMount() {
     document.title = '归档 | 和光同尘';
+    NProgress.start();
     this.props.dispatch({
       type: 'archive/fetch',
       payload: { year: this.props.params.year, month: this.props.params.month },

@@ -54,7 +54,7 @@ class Sidebar extends React.Component {
       <div>
         <div
           style={{
-            width: width,
+            width,
             border: '1px solid #fff',
             borderRadius: 4,
             float: 'right',
@@ -72,7 +72,7 @@ class Sidebar extends React.Component {
           title="分类"
           extra={<Link href="/categories">More</Link>}
           style={{
-            width: width,
+            width,
             float: 'right',
             marginTop: 20,
             padding: '0 10px 10px',
@@ -86,7 +86,7 @@ class Sidebar extends React.Component {
           title="归档"
           extra={<Link href="/archives">More</Link>}
           style={{
-            width: width,
+            width,
             float: 'right',
             marginTop: 20,
             padding: 10,
@@ -99,7 +99,7 @@ class Sidebar extends React.Component {
         <Card
           title="友情链接"
           style={{
-            width: width,
+            width,
             float: 'right',
             marginTop: 20,
             padding: 10,

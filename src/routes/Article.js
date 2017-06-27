@@ -10,6 +10,7 @@ import styles from './Article.css';
 
 class Article extends React.Component {
   componentDidMount() {
+    NProgress.start();
     this.props.dispatch({
       type: 'article/show',
       payload: this.props.params.id,

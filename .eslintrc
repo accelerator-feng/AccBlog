@@ -38,5 +38,6 @@
     "document": true,
     "hljs": true,
     "window": true,
+    "NProgress": true,
   }
 }

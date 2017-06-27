@@ -34,6 +34,7 @@ export default {
 
   reducers: {
     save(state, action) {
+      NProgress.done();
       return { ...state, ...action.payload };
     },
   },

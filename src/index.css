@@ -67,3 +67,12 @@ body,
 :global(ol) {
     list-style-type: decimal !important;
 }
+
+:global(.bar) {
+    background: #fff !important;
+}
+
+:global(.spinner-icon) {
+    border-top-color: #fff !important;
+    border-left-color: #fff !important;
+}
