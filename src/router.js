@@ -12,7 +12,7 @@ function RouterConfig({ history }) {
     <Router history={history}>
       <Route path="/" component={IndexPage}>
         <IndexRoute component={HomePage} />
-        <Route path="archives" component={Archives} />
+        <Route path="archives(/:year)(/:month)" component={Archives} />
         <Route path="categories" component={Categories} />
         <Route path="about" component={About} />
         <Route path="article/:id" component={Article} />

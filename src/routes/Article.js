@@ -28,15 +28,17 @@ class Article extends React.Component {
               </a>
             }
             extra={
-              <span>
-                <Icon type="clock-circle-o" />
-                {' '}
-                发表于 {article.time} By
-                {' '}
-                <Link href="/about" className={styles.link}>
-                  {article.author}
-                </Link>
-              </span>
+              <MediaQuery query="(min-device-width:800px)">
+                <span>
+                  <Icon type="clock-circle-o" />
+                  {' '}
+                  发表于 {article.time} By
+                  {' '}
+                  <Link href="/about" className={styles.link}>
+                    {article.author}
+                  </Link>
+                </span>
+              </MediaQuery>
             }
             style={{
               color: '#817c7c',
@@ -106,12 +108,14 @@ class Article extends React.Component {
     return (
       <Row>
         <Col span={1} />
-        <MediaQuery query="(min-device-width:800px)">
+        <MediaQuery query="(min-device-width:500px)">
           <Col span={17}>{main}</Col>
           <Col span={5}><Sidebar /></Col>
         </MediaQuery>
-        <MediaQuery query="(max-device-width:800px)">
-          <Col span={22}>{main}</Col>
+        <MediaQuery query="(max-device-width:500px)">
+          <Col span={22}>
+            {main}<Sidebar width="100%" />
+          </Col>
         </MediaQuery>
         <Col span={1} />
       </Row>

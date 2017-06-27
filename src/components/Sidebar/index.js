@@ -25,7 +25,7 @@ class Sidebar extends React.Component {
   };
 
   render() {
-    const { categoryMap, archiveMap, linkMap } = this.props;
+    const { categoryMap, archiveMap, linkMap, width = '90%' } = this.props;
     const categories = [];
     if (categoryMap) {
       for (const [category, mount] of Object.entries(categoryMap)) {
@@ -42,14 +42,10 @@ class Sidebar extends React.Component {
     }
     const archives = [];
     if (archiveMap) {
-      for (const [archive, mount] of Object.entries(archiveMap)) {
+      for (const [url, info] of Object.entries(archiveMap)) {
         archives.push(
-          <Link
-            href={`/archives/${archive}`}
-            key={archive}
-            className={styles.link}
-          >
-            <p>{archive} {`(${mount})`}</p>
+          <Link href={`/archives/${url}`} key={url} className={styles.link}>
+            <p>{info.text} {`(${info.count})`}</p>
           </Link>,
         );
       }
@@ -58,7 +54,7 @@ class Sidebar extends React.Component {
       <div>
         <div
           style={{
-            width: '90%',
+            width: width,
             border: '1px solid #fff',
             borderRadius: 4,
             float: 'right',
@@ -76,7 +72,7 @@ class Sidebar extends React.Component {
           title="分类"
           extra={<Link href="/categories">More</Link>}
           style={{
-            width: '90%',
+            width: width,
             float: 'right',
             marginTop: 20,
             padding: '0 10px 10px',
@@ -90,7 +86,7 @@ class Sidebar extends React.Component {
           title="归档"
           extra={<Link href="/archives">More</Link>}
           style={{
-            width: '90%',
+            width: width,
             float: 'right',
             marginTop: 20,
             padding: 10,
@@ -103,7 +99,7 @@ class Sidebar extends React.Component {
         <Card
           title="友情链接"
           style={{
-            width: '90%',
+            width: width,
             float: 'right',
             marginTop: 20,
             padding: 10,

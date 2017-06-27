@@ -1,12 +1,16 @@
 import React from 'react';
+import { connect } from 'dva';
 import { Card, Row, Col, Icon, Table } from 'antd';
-// import { connect } from 'dva';
 
 import styles from './Archives.css';
 
-export default class Archives extends React.Component {
+class Archives extends React.Component {
   componentDidMount() {
     document.title = '归档 | 和光同尘';
+    this.props.dispatch({
+      type: 'archive/fetch',
+      payload: { year: this.props.params.year, month: this.props.params.month },
+    });
   }
 
   rowClassName = () => {
@@ -93,3 +97,5 @@ export default class Archives extends React.Component {
     );
   }
 }
+
+export default connect()(Archives);

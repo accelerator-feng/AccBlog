@@ -38,7 +38,12 @@
 }
 
 .summary {
+    overflow: hidden;
+
     padding: 30px 30px 20px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .previous {
@@ -46,18 +51,18 @@
 
     margin: 10px 0;
     padding: 10px 10px 10px 0;
-    width: 250px;
+    width: 140px;
 
     text-align: center;
 }
 
 .next {
     position: absolute;
-    right: 30px;
-    bottom: 20px;
+    right: 0;
+    top: 0;
 
-    padding: 10px 10px;
-    width: 250px;
+    padding: 10px 0 10px 10px;
+    width: 140px;
 
     text-align: center;
 }
@@ -70,5 +75,6 @@
 
 .nav {
     position: relative;
+
     height: 90px;
 }

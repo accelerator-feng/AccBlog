@@ -10,14 +10,17 @@ import styles from './HomePage.css';
 class HomePage extends React.Component {
   componentDidMount() {
     document.title = '和光同尘 | 前端小白';
-    message.success('欢迎来到和光同尘的博客', 1);
+    if (!window._access) {
+      message.success('欢迎来到和光同尘的博客', 1);
+      window._access = true;
+    }
     this.props.dispatch({
       type: 'article/init',
     });
   }
   handleChange = page => {
     this.props.dispatch({
-      type: 'article/fetch',
+      type: 'article/showPage',
       payload: page,
     });
   };

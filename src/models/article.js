@@ -17,14 +17,14 @@ export default {
       yield put({
         type: 'init',
       });
-      const { data } = yield call(fetch, `/api/show/${payload}`);
+      const { data } = yield call(fetch, `/api/articles/${payload}`);
       yield put({
         type: 'save',
         payload: data,
       });
     },
-    *fetch({ payload }, { call, put }) {
-      const { data } = yield call(fetch, `api/article/page/${payload}`);
+    *showPage({ payload }, { call, put }) {
+      const { data } = yield call(fetch, `api/articles/page/${payload}`);
       yield put({
         type: 'save',
         payload: data,
