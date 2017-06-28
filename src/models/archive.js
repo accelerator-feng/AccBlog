@@ -14,6 +14,7 @@ export default {
         date = `/${payload.year}`;
       }
       const { data } = yield call(fetch, `/api/archives${date}`);
+      console.log(data);
       yield put({
         type: 'save',
         payload: data,
@@ -23,6 +24,7 @@ export default {
 
   reducers: {
     save(state, action) {
+      NProgress.done();
       return { ...state, ...action.payload };
     },
   },

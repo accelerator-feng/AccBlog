@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
+import { Link, browserHistory } from 'dva/router';
 import { Card, Row, Col, Icon, Table } from 'antd';
 
 import styles from './Archives.css';
@@ -19,6 +20,17 @@ class Archives extends React.Component {
   };
 
   render() {
+    const { archiveList, archiveMap, status } = this.props;
+    const archives = [];
+    if (archiveMap) {
+      for (const [url, info] of Object.entries(archiveMap)) {
+        archives.push(
+          <Link href={`/archives/${url}`} key={url} className={styles.link}>
+            <p>{info.text} {`(${info.count})`}</p>
+          </Link>,
+        );
+      }
+    }
     const columns = [
       {
         title: 'Time',
@@ -27,44 +39,13 @@ class Archives extends React.Component {
         className: styles.time,
       },
       {
-        title: 'Article',
-        dataIndex: 'article',
+        title: 'Title',
+        dataIndex: 'title',
         colSpan: 0,
         className: styles.article,
       },
     ];
-    const data = [
-      {
-        key: '1',
-        time: '2017-04-19',
-        article: 'New York No. 1 Lake Park',
-      },
-      {
-        key: '2',
-        time: '2017-04-19',
-        article: 'London No. 1 Lake Park',
-      },
-      {
-        key: '3',
-        time: '2017-04-19',
-        article: 'Sidney No. 1 Lake Park',
-      },
-      {
-        key: '4',
-        time: '2017-04-19',
-        article: 'Sidney No. 1 Lake Park',
-      },
-      {
-        key: '5',
-        time: '2017-04-19',
-        article: 'Sidney No. 1 Lake Park',
-      },
-      {
-        key: '6',
-        time: '2017-04-19',
-        article: 'Sidney No. 1 Lake Park',
-      },
-    ];
+    const data = archiveList;
     return (
       <Row>
         <Col span={1} />
@@ -73,13 +54,10 @@ class Archives extends React.Component {
             <div className={styles.title}>
               <Icon type="folder" />
               {' '}
-              <span style={{ color: '#2ca6cb' }}>归档</span>
+              <span style={{ color: '#2ca6cb' }}>{status}</span>
             </div>
             <div className={styles.archivesList}>
-              <p>2017 年 04 月 (1)</p>
-              <p>2017 年 04 月 (1)</p>
-              <p>2017 年 04 月 (1)</p>
-              <p>2017 年 04 月 (1)</p>
+              {archives}
             </div>
           </Card>
         </Col>
@@ -91,6 +69,10 @@ class Archives extends React.Component {
             dataSource={data}
             pagination={{ pageSize: 5 }}
             rowClassName={this.rowClassName}
+            rowKey={record => record._id}
+            onRowClick={record => {
+              browserHistory.push(`/article/${record._id}`);
+            }}
           />
         </Col>
         <Col span={1} />
@@ -99,4 +81,10 @@ class Archives extends React.Component {
   }
 }
 
-export default connect()(Archives);
+export default connect(state => {
+  return {
+    archiveList: state.archive.archiveList,
+    archiveMap: state.archive.archiveMap,
+    status: state.archive.status,
+  };
+})(Archives);
