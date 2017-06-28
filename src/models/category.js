@@ -8,7 +8,6 @@ export default {
   effects: {
     *fetch({ payload }, { call, put }) {
       const { data } = yield call(fetch, `/api/categories/${payload.category}`);
-      console.log(data);
       yield put({
         type: 'save',
         payload: data,
