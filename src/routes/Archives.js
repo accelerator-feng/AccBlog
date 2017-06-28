@@ -21,7 +21,7 @@ class Archives extends React.Component {
   };
 
   render() {
-    const { archiveList, archiveMap, status } = this.props;
+    const { archiveList, archiveMap, status, loading } = this.props;
     const archives = [];
     if (archiveMap) {
       for (const [url, info] of Object.entries(archiveMap)) {
@@ -61,6 +61,7 @@ class Archives extends React.Component {
     );
     const tableCard = (
       <Table
+        loading={loading}
         className={styles.table}
         columns={columns}
         dataSource={data}
@@ -95,6 +96,7 @@ class Archives extends React.Component {
 
 export default connect(state => {
   return {
+    loading: state.loading.models.archive,
     archiveList: state.archive.archiveList,
     archiveMap: state.archive.archiveMap,
     status: state.archive.status,

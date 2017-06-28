@@ -3,7 +3,10 @@ import fetch from '../utils/request';
 export default {
   namespace: 'article',
 
-  state: {},
+  state: {
+    article: { title: 'loading...', time: '2017-01-01', author: 'Yin Feng' },
+    articles: [{ _id: 1 }, { _id: 2 }],
+  },
 
   effects: {
     *init({ payload }, { call, put }) {

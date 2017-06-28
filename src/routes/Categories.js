@@ -21,7 +21,7 @@ class Categories extends React.Component {
   };
 
   render() {
-    const { categoryList, categoryMap, status } = this.props;
+    const { categoryList, categoryMap, status, loading } = this.props;
     const categories = [];
     if (categoryMap) {
       for (const [category, count] of Object.entries(categoryMap)) {
@@ -73,6 +73,7 @@ class Categories extends React.Component {
         columns={columns}
         dataSource={data}
         pagination={{ pageSize: 5 }}
+        loading={loading}
         rowClassName={this.rowClassName}
         rowKey={record => record._id}
         onRowClick={record => {
@@ -103,6 +104,7 @@ class Categories extends React.Component {
 
 export default connect(state => {
   return {
+    loading: state.loading.models.category,
     categoryList: state.category.categoryList,
     categoryMap: state.category.categoryMap,
     status: state.category.status,
