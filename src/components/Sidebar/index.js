@@ -28,14 +28,14 @@ class Sidebar extends React.Component {
     const { categoryMap, archiveMap, linkMap, width = '90%' } = this.props;
     const categories = [];
     if (categoryMap) {
-      for (const [category, mount] of Object.entries(categoryMap)) {
+      for (const [category, count] of Object.entries(categoryMap)) {
         categories.push(
           <Link
             href={`/categories/${category}`}
             key={category}
             className={styles.link}
           >
-            <p>{category} {`(${mount})`}</p>
+            <p>{category} {`(${count})`}</p>
           </Link>,
         );
       }

@@ -1,19 +1,14 @@
 import fetch from '../utils/request';
 
 export default {
-  namespace: 'archive',
+  namespace: 'category',
 
   state: {},
 
   effects: {
     *fetch({ payload }, { call, put }) {
-      let date = '/';
-      if (payload.month) {
-        date = `/${payload.year}/${payload.month}`;
-      } else if (payload.year) {
-        date = `/${payload.year}`;
-      }
-      const { data } = yield call(fetch, `/api/archives${date}`);
+      const { data } = yield call(fetch, `/api/categories/${payload.category}`);
+      console.log(data);
       yield put({
         type: 'save',
         payload: data,

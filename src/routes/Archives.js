@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link, browserHistory } from 'dva/router';
 import { Card, Row, Col, Icon, Table } from 'antd';
+import MediaQuery from 'react-responsive';
 
 import styles from './Archives.css';
 
@@ -25,7 +26,7 @@ class Archives extends React.Component {
     if (archiveMap) {
       for (const [url, info] of Object.entries(archiveMap)) {
         archives.push(
-          <Link href={`/archives/${url}`} key={url} className={styles.link}>
+          <Link href={`/archives/${url}`} key={url}>
             <p>{info.text} {`(${info.count})`}</p>
           </Link>,
         );
@@ -46,35 +47,46 @@ class Archives extends React.Component {
       },
     ];
     const data = archiveList;
+    const archiveCard = (
+      <Card style={{ marginTop: 30, padding: '20px 20px 30px' }}>
+        <div className={styles.title}>
+          <Icon type="folder" />
+          {' '}
+          <span style={{ color: '#2ca6cb' }}>{status}</span>
+        </div>
+        <div className={styles.archivesList}>
+          {archives}
+        </div>
+      </Card>
+    );
+    const tableCard = (
+      <Table
+        className={styles.table}
+        columns={columns}
+        dataSource={data}
+        pagination={{ pageSize: 5 }}
+        rowClassName={this.rowClassName}
+        rowKey={record => record._id}
+        onRowClick={record => {
+          browserHistory.push(`/article/${record._id}`);
+        }}
+      />
+    );
     return (
       <Row>
         <Col span={1} />
-        <Col span={6}>
-          <Card style={{ marginTop: 30, padding: '20px 20px 30px' }}>
-            <div className={styles.title}>
-              <Icon type="folder" />
-              {' '}
-              <span style={{ color: '#2ca6cb' }}>{status}</span>
-            </div>
-            <div className={styles.archivesList}>
-              {archives}
-            </div>
-          </Card>
-        </Col>
-        <Col span={1} />
-        <Col span={15}>
-          <Table
-            className={styles.table}
-            columns={columns}
-            dataSource={data}
-            pagination={{ pageSize: 5 }}
-            rowClassName={this.rowClassName}
-            rowKey={record => record._id}
-            onRowClick={record => {
-              browserHistory.push(`/article/${record._id}`);
-            }}
-          />
-        </Col>
+        <MediaQuery query="(min-device-width:800px)">
+          <Col span={6}>
+            {archiveCard}
+          </Col>
+          <Col span={1} />
+          <Col span={15}>
+            {tableCard}
+          </Col>
+        </MediaQuery>
+        <MediaQuery query="(max-device-width:800px)">
+          <Col span={22}>{archiveCard}{tableCard}</Col>
+        </MediaQuery>
         <Col span={1} />
       </Row>
     );

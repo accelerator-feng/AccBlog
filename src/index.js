@@ -16,6 +16,7 @@ app.use({});
 app.model(require('./models/user'));
 app.model(require('./models/article'));
 app.model(require('./models/archive'));
+app.model(require('./models/category'));
 
 // 4. Router
 app.router(require('./router'));

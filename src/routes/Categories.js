@@ -1,18 +1,45 @@
 import React from 'react';
+import { connect } from 'dva';
+import { Link, browserHistory } from 'dva/router';
 import { Card, Row, Col, Icon, Table } from 'antd';
-// import { connect } from 'dva';
+import MediaQuery from 'react-responsive';
 
 import styles from './Categories.css';
 
-export default class Categories extends React.Component {
+class Categories extends React.Component {
   componentDidMount() {
     document.title = '分类 | 和光同尘';
+    NProgress.start();
+    this.props.dispatch({
+      type: 'category/fetch',
+      payload: { category: this.props.params.category || 'JavaScript' },
+    });
   }
+
   rowClassName = () => {
     return styles.row;
   };
 
   render() {
+    const { categoryList, categoryMap, status } = this.props;
+    const categories = [];
+    if (categoryMap) {
+      for (const [category, count] of Object.entries(categoryMap)) {
+        categories.push(
+          <Link
+            href={`/categories/${category}`}
+            key={category}
+            className={styles.link}
+          >
+            {status === category
+              ? <span style={{ color: '#ea6753' }}>
+                  {category} {`(${count})`}
+                </span>
+              : <span>{category} {`(${count})`} </span>}
+          </Link>,
+        );
+      }
+    }
     const columns = [
       {
         title: 'Time',
@@ -21,74 +48,63 @@ export default class Categories extends React.Component {
         className: styles.time,
       },
       {
-        title: 'Article',
-        dataIndex: 'article',
+        title: 'Title',
+        dataIndex: 'title',
         colSpan: 0,
         className: styles.article,
       },
     ];
-    const data = [
-      {
-        key: '1',
-        time: '2017-04-19',
-        article: 'New York No. 1 Lake Park',
-      },
-      {
-        key: '2',
-        time: '2017-04-19',
-        article: 'London No. 1 Lake Park',
-      },
-      {
-        key: '3',
-        time: '2017-04-19',
-        article: 'Sidney No. 1 Lake Park',
-      },
-      {
-        key: '4',
-        time: '2017-04-19',
-        article: 'Sidney No. 1 Lake Park',
-      },
-      {
-        key: '5',
-        time: '2017-04-19',
-        article: 'Sidney No. 1 Lake Park',
-      },
-      {
-        key: '6',
-        time: '2017-04-19',
-        article: 'Sidney No. 1 Lake Park',
-      },
-    ];
+    const data = categoryList;
+    const categoryCard = (
+      <Card style={{ marginTop: 30, padding: '20px 20px 30px' }}>
+        <div className={styles.title}>
+          <Icon type="folder" />
+          {' '}
+          <span style={{ color: '#2ca6cb' }}>{status}</span>
+        </div>
+        <div className={styles.categoriesList}>
+          {categories}
+        </div>
+      </Card>
+    );
+    const tableCard = (
+      <Table
+        className={styles.table}
+        columns={columns}
+        dataSource={data}
+        pagination={{ pageSize: 5 }}
+        rowClassName={this.rowClassName}
+        rowKey={record => record._id}
+        onRowClick={record => {
+          browserHistory.push(`/article/${record._id}`);
+        }}
+      />
+    );
     return (
       <Row>
         <Col span={1} />
-        <Col span={6}>
-          <Card style={{ marginTop: 30, padding: '20px 20px 30px' }}>
-            <div className={styles.title}>
-              <Icon type="folder-open" />
-              {' '}
-              <span style={{ color: '#2ca6cb' }}>分类</span>
-            </div>
-            <div className={styles.categoriesList}>
-              <p>2017 年 04 月 (1)</p>
-              <p>2017 年 04 月 (1)</p>
-              <p>2017 年 04 月 (1)</p>
-              <p>2017 年 04 月 (1)</p>
-            </div>
-          </Card>
-        </Col>
-        <Col span={1} />
-        <Col span={15}>
-          <Table
-            className={styles.table}
-            columns={columns}
-            dataSource={data}
-            pagination={{ pageSize: 5 }}
-            rowClassName={this.rowClassName}
-          />
-        </Col>
+        <MediaQuery query="(min-device-width:800px)">
+          <Col span={6}>
+            {categoryCard}
+          </Col>
+          <Col span={1} />
+          <Col span={15}>
+            {tableCard}
+          </Col>
+        </MediaQuery>
+        <MediaQuery query="(max-device-width:800px)">
+          <Col span={22}>{categoryCard}{tableCard}</Col>
+        </MediaQuery>
         <Col span={1} />
       </Row>
     );
   }
 }
+
+export default connect(state => {
+  return {
+    categoryList: state.category.categoryList,
+    categoryMap: state.category.categoryMap,
+    status: state.category.status,
+  };
+})(Categories);

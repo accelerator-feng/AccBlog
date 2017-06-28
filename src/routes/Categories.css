@@ -23,7 +23,7 @@
 
 .time {
     padding-left: 28px !important;
-    width: 220px;
+    width: 35%;
 
     font-size: 15px;
 
@@ -34,4 +34,10 @@
     font-size: 20px;
 
     color: #2ca6cb;
+}
+
+.link {
+    margin-right: 15px;
+
+    font-size: 15px;
 }
