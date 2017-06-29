@@ -1,4 +1,4 @@
-import fetch from '../utils/request.js';
+import { login, register } from '../services/user';
 
 export default {
   namespace: 'user',
@@ -10,16 +10,13 @@ export default {
 
   effects: {
     *login({ payload }, { call, put }) {
-      const { data } = yield call(
-        fetch,
-        `http://newsapi.gugujiankong.com/Handler.ashx?action=login&username=${payload.userName}&password=${payload.password}&r_userName=${payload.r_userName}&r_password=${payload.r_password}&r_confirmPassword=${payload.r_confirmPassword}`,
-      );
-      yield put({
-        type: 'save',
-        payload: { hasLogined: true, NickUserName: data.NickUserName },
-      });
+      const { data } = yield call(login, payload);
+      data.name = 1;
+      yield put({ type: 'save' });
     },
-    *register({ payload }, { put }) {
+    *register({ payload }, { call, put }) {
+      const { data } = yield call(register, payload);
+      data.name = 1;
       yield put({ type: 'save' });
     },
   },

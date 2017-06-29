@@ -1,4 +1,4 @@
-import fetch from '../utils/request';
+import { fetch } from '../services/archive';
 
 export default {
   namespace: 'archive',
@@ -13,7 +13,7 @@ export default {
       } else if (payload.year) {
         date = `/${payload.year}`;
       }
-      const { data } = yield call(fetch, `/api/archives${date}`);
+      const { data } = yield call(fetch, date);
       yield put({
         type: 'save',
         payload: data,

@@ -60,10 +60,6 @@ body,
     background: #23241f;
 }
 
-:global(ul) {
-    list-style-type: disc !important;
-}
-
 :global(ol) {
     list-style-type: decimal !important;
 }

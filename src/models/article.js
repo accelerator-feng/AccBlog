@@ -1,4 +1,4 @@
-import fetch from '../utils/request';
+import { init, show, showPage } from '../services/article';
 
 export default {
   namespace: 'article',
@@ -9,8 +9,8 @@ export default {
   },
 
   effects: {
-    *init({ payload }, { call, put }) {
-      const { data } = yield call(fetch, '/api/index');
+    *init({ payload }, { put }) {
+      const { data } = yield init();
       yield put({
         type: 'save',
         payload: data,
@@ -20,14 +20,14 @@ export default {
       yield put({
         type: 'init',
       });
-      const { data } = yield call(fetch, `/api/articles/${payload}`);
+      const { data } = yield call(show, payload);
       yield put({
         type: 'save',
         payload: data,
       });
     },
     *showPage({ payload }, { call, put }) {
-      const { data } = yield call(fetch, `api/articles/page/${payload}`);
+      const { data } = yield call(showPage, payload);
       yield put({
         type: 'save',
         payload: data,

@@ -1,4 +1,4 @@
-import fetch from '../utils/request';
+import { fetch } from '../services/category';
 
 export default {
   namespace: 'category',
@@ -7,7 +7,7 @@ export default {
 
   effects: {
     *fetch({ payload }, { call, put }) {
-      const { data } = yield call(fetch, `/api/categories/${payload.category}`);
+      const { data } = yield call(fetch, payload.category);
       yield put({
         type: 'save',
         payload: data,

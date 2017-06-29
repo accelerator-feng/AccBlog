@@ -86,15 +86,22 @@ class MyModal extends React.Component {
         ]}
       >
         <Tabs type="card" onChange={this.handleTabChange}>
-          {/*                 注册                    */}
           <TabPane key="register" tab="注册">
             <Form layout="horizontal" onSubmit={this.handleSubmit}>
-              <FormItem label="账户" hasFeedback>
+              <FormItem label="用户名" hasFeedback>
                 {getFieldDecorator('r_userName', {
                   rules: [
                     {
                       required: true,
                       message: '请输入您的用户名！',
+                    },
+                    {
+                      pattern: /^[a-zA-Z][a-zA-Z0-9_]*$/,
+                      message: '字母开头，仅支持字母、数字、下划线',
+                    },
+                    {
+                      max: 16,
+                      message: '不能超过16个字符',
                     },
                   ],
                 })(<Input />)}
@@ -105,6 +112,18 @@ class MyModal extends React.Component {
                     {
                       required: true,
                       message: '请输入您的密码！',
+                    },
+                    {
+                      pattern: /^[a-zA-Z0-9_]*$/,
+                      message: '仅支持字母、数字、下划线',
+                    },
+                    {
+                      max: 16,
+                      message: '不能超过16个字符',
+                    },
+                    {
+                      min: 5,
+                      message: '不能少于5个字符',
                     },
                     {
                       validator: this.checkConfirm,
@@ -128,15 +147,23 @@ class MyModal extends React.Component {
               <Button type="primary" htmlType="submit">注册</Button>
             </Form>
           </TabPane>
-          {/*                登陆                  */}
           <TabPane key="login" tab="登陆">
             <Form layout="horizontal" onSubmit={this.handleSubmit}>
               <FormItem>
                 {getFieldDecorator('userName', {
+                  validateTrigger: 'onBlur',
                   rules: [
                     {
                       required: true,
                       message: '请输入您的用户名！',
+                    },
+                    {
+                      pattern: /^[a-zA-Z][a-zA-Z0-9_]+$/,
+                      message: '用户名不存在',
+                    },
+                    {
+                      max: 16,
+                      message: '用户名不存在',
                     },
                   ],
                 })(
@@ -155,10 +182,15 @@ class MyModal extends React.Component {
               </FormItem>
               <FormItem>
                 {getFieldDecorator('password', {
+                  validateTrigger: 'onBlur',
                   rules: [
                     {
                       required: true,
                       message: '请输入您的密码！',
+                    },
+                    {
+                      pattern: /^[a-zA-Z0-9_]{5,16}$/,
+                      message: '密码错误',
                     },
                   ],
                 })(
