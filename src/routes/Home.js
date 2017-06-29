@@ -7,7 +7,7 @@ import Sidebar from '../components/Sidebar';
 
 import styles from './HomePage.css';
 
-class HomePage extends React.Component {
+class Home extends React.Component {
   componentDidMount() {
     document.title = '和光同尘 | 前端小白';
     if (!window._access) {
@@ -66,4 +66,4 @@ export default connect(state => {
     articles: state.article.articles,
     total: state.article.total,
   };
-})(HomePage);
+})(Home);

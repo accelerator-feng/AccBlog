@@ -41,6 +41,13 @@ class MyModal extends React.Component {
     callback();
   };
 
+  handleUserNameBlur = () => {
+    this.props.dispatch({
+      type: 'user/find',
+      payload: this.props.form.getFieldValue('r_userName'),
+    });
+  };
+
   handleConfirmBlur = e => {
     const value = e.target.value;
     this.setState({
@@ -59,7 +66,7 @@ class MyModal extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const { field, action, props } = this;
-    const formData = props.form.getFieldsValue();
+    const formData = props.form.getFieldsValue(['r_userName', 'r_password']);
     props.form.validateFields(field[action], {}, err => {
       if (!err) {
         props.dispatch({
@@ -77,10 +84,10 @@ class MyModal extends React.Component {
       <Modal
         title="用户中心"
         wrapClassName="vertical-center-modal"
-        visible={this.props.ismodalVisible}
+        visible={this.props.isModalVisible}
         onCancel={this.handleCancel}
         footer={[
-          <Button size="large" onClick={this.handleCancel}>
+          <Button size="large" onClick={this.handleCancel} key="0">
             关闭
           </Button>,
         ]}
@@ -90,6 +97,7 @@ class MyModal extends React.Component {
             <Form layout="horizontal" onSubmit={this.handleSubmit}>
               <FormItem label="用户名" hasFeedback>
                 {getFieldDecorator('r_userName', {
+                  validateTrigger: 'onBlur',
                   rules: [
                     {
                       required: true,
@@ -103,11 +111,23 @@ class MyModal extends React.Component {
                       max: 16,
                       message: '不能超过16个字符',
                     },
+                    {
+                      validator: (rule, value, callback) => {
+                        setTimeout(() => {
+                          if (this.props.hasUser) {
+                            callback('用户名已被占用');
+                          } else {
+                            callback();
+                          }
+                        }, 500);
+                      },
+                    },
                   ],
-                })(<Input />)}
+                })(<Input onBlur={this.handleUserNameBlur} />)}
               </FormItem>
               <FormItem label="密码" hasFeedback>
                 {getFieldDecorator('r_password', {
+                  validateTrigger: 'onBlur',
                   rules: [
                     {
                       required: true,
@@ -133,6 +153,7 @@ class MyModal extends React.Component {
               </FormItem>
               <FormItem label="确认密码" hasFeedback>
                 {getFieldDecorator('r_confirmPassword', {
+                  validateTrigger: 'onBlur',
                   rules: [
                     {
                       required: true,
@@ -159,11 +180,11 @@ class MyModal extends React.Component {
                     },
                     {
                       pattern: /^[a-zA-Z][a-zA-Z0-9_]+$/,
-                      message: '用户名不存在',
+                      message: '用户名格式错误',
                     },
                     {
                       max: 16,
-                      message: '用户名不存在',
+                      message: '用户名格式错误',
                     },
                   ],
                 })(

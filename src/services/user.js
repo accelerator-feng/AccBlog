@@ -21,3 +21,7 @@ export async function register(registerInfo) {
     body: JSON.stringify(registerInfo),
   });
 }
+
+export async function find(userName) {
+  return request(`/api/user/${userName}`);
+}

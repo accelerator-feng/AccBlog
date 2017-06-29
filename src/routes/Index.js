@@ -9,27 +9,27 @@ import Footer from '../components/Footer';
 
 import styles from './IndexPage.css';
 
-class IndexPage extends React.Component {
+class Index extends React.Component {
   render() {
     const {
       children,
       isModalVisible,
       hasLogined,
-      NickUserName,
       dispatch,
+      hasUser,
     } = this.props;
     return (
       <div>
-        <Header
-          dispatch={dispatch}
-          hasLogined={hasLogined}
-          NickUserName={NickUserName}
-        />
+        <Header dispatch={dispatch} hasLogined={hasLogined} />
         <div className={styles.children}>
           {children}
         </div>
         <Footer />
-        <Modal dispatch={dispatch} ismodalVisible={isModalVisible} />
+        <Modal
+          dispatch={dispatch}
+          isModalVisible={isModalVisible}
+          hasUser={hasUser}
+        />
         <BackTop visibilityHeight="300">
           <div className={styles['ant-back-top-inner']}>UP</div>
         </BackTop>
@@ -58,6 +58,6 @@ export default connect(state => {
   return {
     isModalVisible: state.user.isModalVisible,
     hasLogined: state.user.hasLogined,
-    NickUserName: state.user.NickUserName,
+    hasUser: state.user.hasUser,
   };
-})(IndexPage);
+})(Index);

@@ -3,8 +3,6 @@ import { Menu, Row, Col, Icon, Button, Dropdown } from 'antd';
 import { Link } from 'dva/router';
 import MediaQuery from 'react-responsive';
 
-// import Login from '../Login';
-
 import styles from './index.css';
 import logo from '../../assets/logo.png';
 
@@ -47,7 +45,7 @@ export default class Header extends React.Component {
           <Icon type="login" />注册/登陆
         </Menu.Item>;
     const menu = (
-      <Menu>
+      <Menu onClick={this.handleClick}>
         <Menu.Item key="index">
           <Link to="/">主页</Link>
         </Menu.Item>
@@ -59,6 +57,9 @@ export default class Header extends React.Component {
         </Menu.Item>
         <Menu.Item key="about">
           <Link to="/about">关于</Link>
+        </Menu.Item>
+        <Menu.Item key="login">
+          登录
         </Menu.Item>
       </Menu>
     );
