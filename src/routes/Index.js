@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import Modal from '../components/Modal';
 import Footer from '../components/Footer';
 
-import styles from './IndexPage.css';
+import styles from './Index.css';
 
 class Index extends React.Component {
   render() {

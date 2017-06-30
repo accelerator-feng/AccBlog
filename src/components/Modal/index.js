@@ -41,13 +41,6 @@ class MyModal extends React.Component {
     callback();
   };
 
-  handleUserNameBlur = () => {
-    this.props.dispatch({
-      type: 'user/find',
-      payload: this.props.form.getFieldValue('r_userName'),
-    });
-  };
-
   handleConfirmBlur = e => {
     const value = e.target.value;
     this.setState({
@@ -113,6 +106,10 @@ class MyModal extends React.Component {
                     },
                     {
                       validator: (rule, value, callback) => {
+                        this.props.dispatch({
+                          type: 'user/find',
+                          payload: value,
+                        });
                         setTimeout(() => {
                           if (this.props.hasUser) {
                             callback('用户名已被占用');
@@ -123,7 +120,7 @@ class MyModal extends React.Component {
                       },
                     },
                   ],
-                })(<Input onBlur={this.handleUserNameBlur} />)}
+                })(<Input />)}
               </FormItem>
               <FormItem label="密码" hasFeedback>
                 {getFieldDecorator('r_password', {

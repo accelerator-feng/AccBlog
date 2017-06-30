@@ -5,7 +5,7 @@ import MediaQuery from 'react-responsive';
 import ArticleCard from '../components/ArticleCard';
 import Sidebar from '../components/Sidebar';
 
-import styles from './HomePage.css';
+import styles from './Home.css';
 
 class Home extends React.Component {
   componentDidMount() {
