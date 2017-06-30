@@ -21,7 +21,7 @@ class Categories extends React.Component {
   };
 
   render() {
-    const { categoryList, categoryMap, status, loading } = this.props;
+    const { categoryList, categoryMap, title, loading } = this.props;
     const categories = [];
     if (categoryMap) {
       for (const [category, count] of Object.entries(categoryMap)) {
@@ -31,7 +31,7 @@ class Categories extends React.Component {
             key={category}
             className={styles.link}
           >
-            {status === category
+            {title === category
               ? <span style={{ color: '#ea6753' }}>
                   {category} {`(${count})`}
                 </span>
@@ -60,7 +60,7 @@ class Categories extends React.Component {
         <div className={styles.title}>
           <Icon type="folder" />
           {' '}
-          <span style={{ color: '#2ca6cb' }}>{status}</span>
+          <span style={{ color: '#2ca6cb' }}>{title}</span>
         </div>
         <div className={styles.categoriesList}>
           {categories}
@@ -107,6 +107,6 @@ export default connect(state => {
     loading: state.loading.models.category,
     categoryList: state.category.categoryList,
     categoryMap: state.category.categoryMap,
-    status: state.category.status,
+    title: state.category.title,
   };
 })(Categories);

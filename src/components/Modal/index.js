@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Tabs, Form, Input, Button, Modal } from 'antd';
+import { Icon, Tabs, Form, Input, Button, Modal, message } from 'antd';
 
 const FormItem = Form.Item;
 const TabPane = Tabs.TabPane;
@@ -12,8 +12,8 @@ class MyModal extends React.Component {
     };
     this.action = 'register';
     this.field = {
-      login: ['userName', 'password'],
-      register: ['r_userName', 'r_password', 'r_confirmPassword'],
+      login: ['username', 'password'],
+      register: ['r_username', 'r_password', 'r_confirmPassword'],
     };
   }
 
@@ -58,15 +58,24 @@ class MyModal extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { field, action, props } = this;
-    const formData = props.form.getFieldsValue(['r_userName', 'r_password']);
+    const { field, action, props, handleCancel } = this;
+    const formData = props.form.getFieldsValue(field[action]);
     props.form.validateFields(field[action], {}, err => {
       if (!err) {
         props.dispatch({
           type: `user/${action}`,
           payload: formData,
         });
-        this.handleCancel();
+        setTimeout(() => {
+          if (action === 'login') {
+            if (!this.props.err) {
+              message.success('登录成功');
+              handleCancel();
+            } else {
+              message.error(this.props.err);
+            }
+          }
+        }, 500);
       }
     });
   };
@@ -89,7 +98,7 @@ class MyModal extends React.Component {
           <TabPane key="register" tab="注册">
             <Form layout="horizontal" onSubmit={this.handleSubmit}>
               <FormItem label="用户名" hasFeedback>
-                {getFieldDecorator('r_userName', {
+                {getFieldDecorator('r_username', {
                   validateTrigger: 'onBlur',
                   rules: [
                     {
@@ -167,8 +176,8 @@ class MyModal extends React.Component {
           </TabPane>
           <TabPane key="login" tab="登陆">
             <Form layout="horizontal" onSubmit={this.handleSubmit}>
-              <FormItem>
-                {getFieldDecorator('userName', {
+              <FormItem hasFeedback>
+                {getFieldDecorator('username', {
                   validateTrigger: 'onBlur',
                   rules: [
                     {
@@ -198,9 +207,9 @@ class MyModal extends React.Component {
                   />,
                 )}
               </FormItem>
-              <FormItem>
+              <FormItem hasFeedback>
                 {getFieldDecorator('password', {
-                  validateTrigger: 'onBlur',
+                  validateTrigger: 'onSubmit',
                   rules: [
                     {
                       required: true,

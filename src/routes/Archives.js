@@ -21,7 +21,7 @@ class Archives extends React.Component {
   };
 
   render() {
-    const { archiveList, archiveMap, status, loading } = this.props;
+    const { archiveList, archiveMap, title, loading } = this.props;
     const archives = [];
     if (archiveMap) {
       for (const [url, info] of Object.entries(archiveMap)) {
@@ -52,7 +52,7 @@ class Archives extends React.Component {
         <div className={styles.title}>
           <Icon type="folder" />
           {' '}
-          <span style={{ color: '#2ca6cb' }}>{status}</span>
+          <span style={{ color: '#2ca6cb' }}>{title}</span>
         </div>
         <div className={styles.archivesList}>
           {archives}
@@ -99,6 +99,6 @@ export default connect(state => {
     loading: state.loading.models.archive,
     archiveList: state.archive.archiveList,
     archiveMap: state.archive.archiveMap,
-    status: state.archive.status,
+    title: state.archive.title,
   };
 })(Archives);

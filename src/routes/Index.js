@@ -17,6 +17,7 @@ class Index extends React.Component {
       hasLogined,
       dispatch,
       hasUser,
+      err,
     } = this.props;
     return (
       <div>
@@ -29,6 +30,7 @@ class Index extends React.Component {
           dispatch={dispatch}
           isModalVisible={isModalVisible}
           hasUser={hasUser}
+          err={err}
         />
         <BackTop visibilityHeight="300">
           <div className={styles['ant-back-top-inner']}>UP</div>
@@ -59,5 +61,6 @@ export default connect(state => {
     isModalVisible: state.user.isModalVisible,
     hasLogined: state.user.hasLogined,
     hasUser: state.user.hasUser,
+    err: state.user.err,
   };
 })(Index);

@@ -10,9 +10,12 @@ export default {
 
   effects: {
     *login({ payload }, { call, put }) {
-      const { data } = yield call(login, payload);
-      data.name = 1;
-      yield put({ type: 'save' });
+      const { data, err } = yield call(login, payload);
+      if (err) {
+        yield put({ type: 'save', payload: { err: '用户名或密码错误' } });
+      } else {
+        yield put({ type: 'save', payload: data });
+      }
     },
     *register({ payload }, { call }) {
       yield call(register, payload);
