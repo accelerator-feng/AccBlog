@@ -20,7 +20,7 @@ export default {
       }
     },
     *register({ payload }, { call }) {
-      yield call(register, payload);
+      yield call(register, payload.formData);
       message.success('注册成功');
     },
     *find({ payload }, { call }) {
