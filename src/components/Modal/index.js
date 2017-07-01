@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Tabs, Form, Input, Button, Modal, message } from 'antd';
+import { Icon, Tabs, Form, Input, Button, Modal } from 'antd';
 
 const FormItem = Form.Item;
 const TabPane = Tabs.TabPane;
