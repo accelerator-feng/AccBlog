@@ -38,6 +38,14 @@
 
 .menu {
     float: right;
+
     font-size: 25px;
+
+    color: #fff;
+}
+
+.username {
+    margin-right: 5px;
+
     color: #fff;
 }

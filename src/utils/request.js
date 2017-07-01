@@ -27,7 +27,7 @@ function getCookie(name) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options = {}) {
-  if (options.method === 'POST') {
+  if (options.method === 'POST' || options.method === 'DELETE') {
     options.headers['x-csrf-token'] = getCookie('csrfToken'); // eslint-disable-line
   }
   return fetch(url, Object.assign(options, { credentials: 'include' }))

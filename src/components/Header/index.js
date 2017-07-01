@@ -11,7 +11,11 @@ export default class Header extends React.Component {
     super(props);
     this.state = { current: 'look' };
   }
-
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'user/checkLogin',
+    });
+  }
   handleClick = e => {
     this.setState({
       current: e.key,
@@ -31,11 +35,11 @@ export default class Header extends React.Component {
   };
 
   render() {
-    const { hasLogined, NickUserName } = this.props;
+    const { hasLogined, username } = this.props;
     const userShow = hasLogined
       ? <Menu.Item key="logout">
-          <Button type="primary">
-            {NickUserName}
+          <Button type="primary" className={styles.username}>
+            {username}
           </Button>
           <Button onClick={this.handleLogout}>
             退出

@@ -16,22 +16,20 @@ class Index extends React.Component {
       isModalVisible,
       hasLogined,
       dispatch,
-      hasUser,
-      err,
+      username,
     } = this.props;
     return (
       <div>
-        <Header dispatch={dispatch} hasLogined={hasLogined} />
+        <Header
+          dispatch={dispatch}
+          hasLogined={hasLogined}
+          username={username}
+        />
         <div className={styles.children}>
           {children}
         </div>
         <Footer />
-        <Modal
-          dispatch={dispatch}
-          isModalVisible={isModalVisible}
-          hasUser={hasUser}
-          err={err}
-        />
+        <Modal dispatch={dispatch} isModalVisible={isModalVisible} />
         <BackTop visibilityHeight="300">
           <div className={styles['ant-back-top-inner']}>UP</div>
         </BackTop>
@@ -60,7 +58,6 @@ export default connect(state => {
   return {
     isModalVisible: state.user.isModalVisible,
     hasLogined: state.user.hasLogined,
-    hasUser: state.user.hasUser,
-    err: state.user.err,
+    username: state.user.username,
   };
 })(Index);

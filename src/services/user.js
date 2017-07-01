@@ -20,6 +20,17 @@ export async function register(registerInfo) {
   });
 }
 
-export async function find(username) {
+export async function query(username) {
   return request(`/api/user?username=${username}`);
+}
+
+export async function logout() {
+  return request('/api/session', {
+    method: 'DELETE',
+    headers: {},
+  });
+}
+
+export async function checkLogin() {
+  return request('/api/session/loginStatus');
 }

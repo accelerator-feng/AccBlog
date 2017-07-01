@@ -109,7 +109,7 @@ class MyModal extends React.Component {
                     {
                       validator: (rule, value, callback) => {
                         this.props.dispatch({
-                          type: 'user/find',
+                          type: 'user/query',
                           payload: { value, callback },
                         });
                       },
