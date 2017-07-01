@@ -9,10 +9,11 @@ import styles from './Archives.css';
 class Archives extends React.Component {
   componentDidMount() {
     document.title = '归档 | 和光同尘';
+    const { dispatch, params } = this.props;
     NProgress.start();
-    this.props.dispatch({
+    dispatch({
       type: 'archive/fetch',
-      payload: { year: this.props.params.year, month: this.props.params.month },
+      payload: params,
     });
   }
 

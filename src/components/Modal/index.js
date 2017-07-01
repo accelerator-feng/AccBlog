@@ -50,7 +50,7 @@ class MyModal extends React.Component {
 
   handleCancel = () => {
     this.props.dispatch({
-      type: 'user/hide',
+      type: 'user/save',
       payload: { isModalVisible: false },
     });
     this.props.form.resetFields();
@@ -64,18 +64,11 @@ class MyModal extends React.Component {
       if (!err) {
         props.dispatch({
           type: `user/${action}`,
-          payload: formData,
+          payload: { formData, handleCancel },
         });
-        setTimeout(() => {
-          if (action === 'login') {
-            if (!this.props.err) {
-              message.success('登录成功');
-              handleCancel();
-            } else {
-              message.error(this.props.err);
-            }
-          }
-        }, 500);
+        if (action === 'register') {
+          handleCancel();
+        }
       }
     });
   };
@@ -107,7 +100,7 @@ class MyModal extends React.Component {
                     },
                     {
                       pattern: /^[a-zA-Z][a-zA-Z0-9_]*$/,
-                      message: '字母开头，仅支持字母、数字、下划线',
+                      message: '需字母开头，且仅支持字母、数字、下划线',
                     },
                     {
                       max: 16,
@@ -117,15 +110,8 @@ class MyModal extends React.Component {
                       validator: (rule, value, callback) => {
                         this.props.dispatch({
                           type: 'user/find',
-                          payload: value,
+                          payload: { value, callback },
                         });
-                        setTimeout(() => {
-                          if (this.props.hasUser) {
-                            callback('用户名已被占用');
-                          } else {
-                            callback();
-                          }
-                        }, 500);
                       },
                     },
                   ],

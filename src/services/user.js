@@ -21,5 +21,5 @@ export async function register(registerInfo) {
 }
 
 export async function find(username) {
-  return request(`/api/user/${username}`);
+  return request(`/api/user?username=${username}`);
 }

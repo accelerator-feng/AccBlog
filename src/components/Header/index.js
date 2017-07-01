@@ -18,7 +18,7 @@ export default class Header extends React.Component {
     });
     if (e.key === 'login') {
       this.props.dispatch({
-        type: 'user/show',
+        type: 'user/save',
         payload: { isModalVisible: true },
       });
     }
