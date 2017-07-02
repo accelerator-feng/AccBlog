@@ -28,8 +28,8 @@ export default {
       message.success('注册成功');
     },
     *query({ payload }, { call }) {
-      const { data } = yield call(query, payload.value);
-      if (data.hasUser) {
+      const { err, data } = yield call(query, payload.value);
+      if (!err && data.hasUser) {
         payload.callback('用户名已被占用');
       } else {
         payload.callback();

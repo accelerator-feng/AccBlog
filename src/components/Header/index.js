@@ -36,18 +36,6 @@ export default class Header extends React.Component {
 
   render() {
     const { hasLogined, username } = this.props;
-    const userShow = hasLogined
-      ? <Menu.Item key="logout">
-          <Button type="primary" className={styles.username}>
-            {username}
-          </Button>
-          <Button onClick={this.handleLogout}>
-            退出
-          </Button>
-        </Menu.Item>
-      : <Menu.Item key="login">
-          <Icon type="login" />注册/登陆
-        </Menu.Item>;
     const menu = (
       <Menu onClick={this.handleClick}>
         <Menu.Item key="index">
@@ -62,9 +50,13 @@ export default class Header extends React.Component {
         <Menu.Item key="about">
           <Link to="/about">关于</Link>
         </Menu.Item>
-        <Menu.Item key="login">
-          登录
-        </Menu.Item>
+        {hasLogined
+          ? <Menu.Item key="logout">
+              <span onClick={this.handleLogout}>退出</span>
+            </Menu.Item>
+          : <Menu.Item key="login">
+              登录
+            </Menu.Item>}
       </Menu>
     );
     const title = (
@@ -104,7 +96,18 @@ export default class Header extends React.Component {
               <Menu.Item key="about">
                 <Link to="/about"><Icon type="appstore" />关于</Link>
               </Menu.Item>
-              {userShow}
+              {hasLogined
+                ? <Menu.Item key="logout">
+                    <Button type="primary" className={styles.username}>
+                      {username}
+                    </Button>
+                    <Button onClick={this.handleLogout}>
+                      退出
+                    </Button>
+                  </Menu.Item>
+                : <Menu.Item key="login">
+                    <Icon type="login" />注册/登陆
+                  </Menu.Item>}
             </Menu>
           </Col>
           <Col span={1} />

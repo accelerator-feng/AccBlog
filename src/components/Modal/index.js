@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Tabs, Form, Input, Button, Modal } from 'antd';
+import { Icon, Tabs, Form, Input, Button, Modal, Checkbox } from 'antd';
 
 const FormItem = Form.Item;
 const TabPane = Tabs.TabPane;
@@ -12,7 +12,7 @@ class MyModal extends React.Component {
     };
     this.action = 'register';
     this.field = {
-      login: ['username', 'password'],
+      login: ['username', 'password', 'rememberMe'],
       register: ['r_username', 'r_password', 'r_confirmPassword'],
     };
   }
@@ -221,7 +221,14 @@ class MyModal extends React.Component {
                   />,
                 )}
               </FormItem>
-              <Button type="primary" htmlType="submit">登陆</Button>
+              <FormItem>
+                {getFieldDecorator('rememberMe', {
+                  valuePropName: 'checked',
+                })(<Checkbox>记住我</Checkbox>)}
+              </FormItem>
+              <Button type="primary" htmlType="submit">
+                登陆
+              </Button>
             </Form>
           </TabPane>
         </Tabs>
