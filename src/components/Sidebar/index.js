@@ -31,7 +31,7 @@ class Sidebar extends React.Component {
       for (const [category, count] of Object.entries(categoryMap)) {
         categories.push(
           <Link
-            href={`/categories/${category}`}
+            to={`/categories/${category}`}
             key={category}
             className={styles.link}
           >
@@ -44,7 +44,7 @@ class Sidebar extends React.Component {
     if (archiveMap) {
       for (const [url, info] of Object.entries(archiveMap)) {
         archives.push(
-          <Link href={`/archives/${url}`} key={url} className={styles.link}>
+          <Link to={`/archives/${url}`} key={url} className={styles.link}>
             <p>{info.text} {`(${info.count})`}</p>
           </Link>,
         );
@@ -70,7 +70,7 @@ class Sidebar extends React.Component {
         </div>
         <Card
           title="分类"
-          extra={<Link href="/categories">More</Link>}
+          extra={<Link to="/categories">More</Link>}
           style={{
             width,
             float: 'right',
@@ -84,7 +84,7 @@ class Sidebar extends React.Component {
         </Card>
         <Card
           title="归档"
-          extra={<Link href="/archives">More</Link>}
+          extra={<Link to="/archives">More</Link>}
           style={{
             width,
             float: 'right',

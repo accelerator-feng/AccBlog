@@ -60,7 +60,7 @@ export default class Header extends React.Component {
       </Menu>
     );
     const title = (
-      <Link href="/">
+      <Link to="/">
         <img src={logo} alt="logo" className={styles.logo} />
         <span className={styles.title}>和光同尘</span>
         <span className={styles.desc}>前端小白的学习笔记</span>

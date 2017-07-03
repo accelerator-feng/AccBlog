@@ -8,7 +8,6 @@ import SideBar from '../components/Sidebar';
 class Archives extends React.Component {
   componentDidMount() {
     document.title = '关于 | 和光同尘';
-    NProgress.start();
     this.props.dispatch({
       type: 'article/init',
     });

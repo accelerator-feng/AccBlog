@@ -1,3 +1,4 @@
+import { routerRedux } from 'dva/router';
 import { init, show, showPage } from '../services/article';
 
 export default {
@@ -10,6 +11,7 @@ export default {
 
   effects: {
     *init({ payload }, { put }) {
+      NProgress.start();
       const { data } = yield init();
       yield put({
         type: 'save',
@@ -27,11 +29,19 @@ export default {
       });
     },
     *showPage({ payload }, { call, put }) {
+      NProgress.start();
       const { data } = yield call(showPage, payload);
       yield put({
         type: 'save',
         payload: data,
       });
+    },
+    *push({ payload }, { put }) {
+      yield put(
+        routerRedux.push({
+          pathname: payload,
+        }),
+      );
     },
   },
 

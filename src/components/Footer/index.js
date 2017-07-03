@@ -102,7 +102,7 @@ export default function Footer() {
         {' '}
         © 2017
         {' '}
-        <Link href="/about" className={styles['copyright-link']}>
+        <Link to="/about" className={styles['copyright-link']}>
           Yin Feng
         </Link>
       </div>

@@ -7,13 +7,7 @@ export default {
 
   effects: {
     *fetch({ payload }, { call, put }) {
-      let date = '/';
-      if (payload.month) {
-        date = `/${payload.year}/${payload.month}`;
-      } else if (payload.year) {
-        date = `/${payload.year}`;
-      }
-      const { data } = yield call(fetch, date);
+      const { data } = yield call(fetch, payload);
       yield put({
         type: 'save',
         payload: data,
@@ -25,6 +19,18 @@ export default {
     save(state, action) {
       NProgress.done();
       return { ...state, ...action.payload };
+    },
+  },
+
+  subscriptions: {
+    setup({ dispatch, history }) {
+      return history.listen(({ pathname }) => {
+        const pattern = new RegExp(/\/archives(\/\d{4})?(\/\d{2})?/);
+        if (pattern.test(pathname)) {
+          NProgress.start();
+          dispatch({ type: 'fetch', payload: pathname });
+        }
+      });
     },
   },
 };

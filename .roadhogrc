@@ -1,7 +1,7 @@
 {
   "entry": "src/index.js",
   "disableCSSModules": false,
-  "publicPath": "/",
+  "publicPath": "/public/",
   "outputPath": "./dist",
   "extraBabelPlugins": [
     "transform-runtime",

@@ -72,3 +72,7 @@ body,
     border-top-color: #fff !important;
     border-left-color: #fff !important;
 }
+
+:global(a:focus) {
+    text-decoration: none !important;
+}

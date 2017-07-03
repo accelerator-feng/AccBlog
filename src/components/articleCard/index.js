@@ -15,7 +15,7 @@ function ArticleCard(props) {
           <Card
             key={article._id}
             title={
-              <Link href={`/article/${article._id}`} className={styles.link}>
+              <Link to={`/article/${article._id}`} className={styles.link}>
                 {article.title || 'loading...'}
               </Link>
             }
@@ -27,7 +27,7 @@ function ArticleCard(props) {
                   {' '}
                   发表于 {article.time || '2017-01-01'} By
                   {' '}
-                  <Link href="/about" className={styles.link}>
+                  <Link to="/about" className={styles.link}>
                     {article.author || 'Yin Feng'}
                   </Link>
                 </span>
@@ -43,7 +43,7 @@ function ArticleCard(props) {
           >
             <div className={styles.summary}>
               <div>{article.summary}</div>
-              <Link href={`/article/${article._id}`}>
+              <Link to={`/article/${article._id}`}>
                 <Button className={styles.btn}>
                   Read More
                 </Button>
@@ -55,18 +55,19 @@ function ArticleCard(props) {
                   <Icon type="folder" style={{ color: '#ccc' }} />
                   {' '}
                   <Link
-                    href={`/categories/${article.category}`}
+                    to={`/categories/${article.category}`}
                     className={styles.category}
                   >
                     {article.category}
                   </Link>&nbsp;&nbsp;
                 </span>}
               {article.tags &&
+                article.tags.length > 0 &&
                 <span>
                   <Icon type="tags" style={{ color: '#ccc' }} />
                   {' '}
                   {article.tags.map((tag, i) => (
-                    <Link key={i} href={`/tags/${tag}`} className={styles.tag}>
+                    <Link key={i} to={`/tags/${tag}`} className={styles.tag}>
                       {tag}{' '}
                     </Link>
                   ))}

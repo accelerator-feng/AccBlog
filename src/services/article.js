@@ -9,5 +9,5 @@ export async function show(id) {
 }
 
 export async function showPage(page) {
-  return request(`api/articles/page/${page}`);
+  return request(`/api/articles/page/${page}`);
 }

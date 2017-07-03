@@ -14,13 +14,11 @@ class Home extends React.Component {
       message.success('欢迎来到和光同尘的博客', 1);
       window._access = true;
     }
-    NProgress.start();
     this.props.dispatch({
       type: 'article/init',
     });
   }
   handleChange = page => {
-    NProgress.start();
     this.props.dispatch({
       type: 'article/showPage',
       payload: page,

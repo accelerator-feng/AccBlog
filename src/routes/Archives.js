@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Link, browserHistory } from 'dva/router';
+import { Link } from 'dva/router';
 import { Card, Row, Col, Icon, Table } from 'antd';
 import MediaQuery from 'react-responsive';
 
@@ -9,12 +9,6 @@ import styles from './Archives.css';
 class Archives extends React.Component {
   componentDidMount() {
     document.title = '归档 | 和光同尘';
-    const { dispatch, params } = this.props;
-    NProgress.start();
-    dispatch({
-      type: 'archive/fetch',
-      payload: params,
-    });
   }
 
   rowClassName = () => {
@@ -27,7 +21,11 @@ class Archives extends React.Component {
     if (archiveMap) {
       for (const [url, info] of Object.entries(archiveMap)) {
         archives.push(
-          <Link href={`/archives/${url}`} key={url}>
+          <Link
+            to={`/archives/${url}`}
+            key={url}
+            activeStyle={{ color: '#ea6753' }}
+          >
             <p>{info.text} {`(${info.count})`}</p>
           </Link>,
         );
@@ -70,7 +68,10 @@ class Archives extends React.Component {
         rowClassName={this.rowClassName}
         rowKey={record => record._id}
         onRowClick={record => {
-          browserHistory.push(`/article/${record._id}`);
+          this.props.dispatch({
+            type: 'article/push',
+            payload: `/article/${record._id}`,
+          });
         }}
       />
     );

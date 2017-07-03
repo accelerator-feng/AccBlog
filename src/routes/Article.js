@@ -10,7 +10,6 @@ import styles from './Article.css';
 
 class Article extends React.Component {
   componentDidMount() {
-    NProgress.start();
     this.props.dispatch({
       type: 'article/show',
       payload: this.props.params.id,
@@ -35,7 +34,7 @@ class Article extends React.Component {
                 {' '}
                 发表于 {article.time} By
                 {' '}
-                <Link href="/about" className={styles.link}>
+                <Link to="/about" className={styles.link}>
                   {article.author}
                 </Link>
               </span>
@@ -67,7 +66,7 @@ class Article extends React.Component {
                 <Icon type="folder" style={{ color: '#ccc' }} />
                 {' '}
                 <Link
-                  href={`/categories/${article.category}`}
+                  to={`/categories/${article.category}`}
                   className={styles.category}
                 >
                   {article.category}
@@ -78,7 +77,7 @@ class Article extends React.Component {
                 <Icon type="tags" style={{ color: '#ccc' }} />
                 {' '}
                 {article.tags.map((tag, i) => (
-                  <Link key={i} href={`/tags/${tag}`} className={styles.tag}>
+                  <Link key={i} to={`/tags/${tag}`} className={styles.tag}>
                     {tag}{' '}
                   </Link>
                 ))}
@@ -87,7 +86,7 @@ class Article extends React.Component {
               {previous &&
                 <Link
                   className={styles.previous}
-                  href={`/article/${previous._id}`}
+                  to={`/article/${previous._id}`}
                 >
                   <strong>上一篇：</strong>
                   <div>
@@ -95,7 +94,7 @@ class Article extends React.Component {
                   </div>
                 </Link>}
               {next &&
-                <Link className={styles.next} href={`/article/${next._id}`}>
+                <Link className={styles.next} to={`/article/${next._id}`}>
                   <strong>下一篇：</strong>
                   <div>
                     {next.title} <Icon type="right" />
