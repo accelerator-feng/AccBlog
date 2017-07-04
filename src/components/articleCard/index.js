@@ -67,7 +67,7 @@ function ArticleCard(props) {
                   <Icon type="tags" style={{ color: '#ccc' }} />
                   {' '}
                   {article.tags.map((tag, i) => (
-                    <Link key={i} to={`/tags/${tag}`} className={styles.tag}>
+                    <Link key={i} className={styles.tag}>
                       {tag}{' '}
                     </Link>
                   ))}

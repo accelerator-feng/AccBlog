@@ -5,9 +5,9 @@ export async function init() {
 }
 
 export async function show(id) {
-  return request(`/api/articles/${id}`);
+  return request(`/api${id}`);
 }
 
 export async function showPage(page) {
-  return request(`/api/articles/page/${page}`);
+  return request(`/api/article/page/${page}`);
 }

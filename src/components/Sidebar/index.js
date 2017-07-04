@@ -5,7 +5,7 @@ import { Link } from 'dva/router';
 
 import styles from './index.css';
 
-class Sidebar extends React.PureComponent {
+class Sidebar extends React.Component {
   getMonthData = value => {
     if (value.year() === 2017 && (value.month() === 7 || value.month() === 6)) {
       return '蚂蚁实习';

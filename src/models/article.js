@@ -51,4 +51,16 @@ export default {
       return { ...state, ...action.payload };
     },
   },
+
+  subscriptions: {
+    setup({ dispatch, history }) {
+      return history.listen(({ pathname }) => {
+        const pattern = new RegExp(/\/article\/[a-zA-Z0-9_]+/);
+        if (pattern.test(pathname)) {
+          NProgress.start();
+          dispatch({ type: 'show', payload: pathname });
+        }
+      });
+    },
+  },
 };

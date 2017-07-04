@@ -1,0 +1,7 @@
+.editor {
+    margin-top: 20px;
+}
+
+:global(.public-DraftEditor-content) {
+    min-height: 120px !important;
+}
