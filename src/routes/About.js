@@ -5,7 +5,7 @@ import MediaQuery from 'react-responsive';
 import marked from 'marked';
 import SideBar from '../components/Sidebar';
 
-class Archives extends React.Component {
+class Archives extends React.PureComponent {
   componentDidMount() {
     document.title = '关于 | 和光同尘';
     this.props.dispatch({

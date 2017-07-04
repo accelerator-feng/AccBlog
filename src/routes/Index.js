@@ -8,6 +8,7 @@ import Modal from '../components/Modal';
 import Footer from '../components/Footer';
 
 import styles from './Index.css';
+import fork from '../assets/forkme_right_white_ffffff.png';
 
 class Index extends React.Component {
   render() {
@@ -44,7 +45,7 @@ class Index extends React.Component {
                 width: 130,
                 height: 130,
               }}
-              src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+              src={fork}
               alt="Fork me on GitHub"
             />
           </a>

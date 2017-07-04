@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'dva';
 import { Card, Calendar } from 'antd';
 import { Link } from 'dva/router';
-// import Music from '../Music';
 
 import styles from './index.css';
 
-class Sidebar extends React.Component {
+class Sidebar extends React.PureComponent {
   getMonthData = value => {
     if (value.year() === 2017 && (value.month() === 7 || value.month() === 6)) {
       return '蚂蚁实习';
