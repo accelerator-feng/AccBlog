@@ -99,12 +99,12 @@ function Article(props) {
     <Row>
       <Col span={1} />
       <MediaQuery query="(min-device-width:500px)">
-        <Col span={17}>{main}<RichEditor /></Col>
+        <Col span={17}>{main}</Col>
         <Col span={5}><Sidebar /></Col>
       </MediaQuery>
       <MediaQuery query="(max-device-width:500px)">
         <Col span={22}>
-          {main}<RichEditor /><Sidebar width="100%" />
+          {main}<Sidebar width="100%" />
         </Col>
       </MediaQuery>
       <Col span={1} />

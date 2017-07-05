@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import styles from './index.css';
+// import styles from './index.css';
 
 class RichEditor extends React.Component {
   constructor(props) {
