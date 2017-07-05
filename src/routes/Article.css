@@ -58,8 +58,8 @@
 
 .next {
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
 
     padding: 10px 0 10px 10px;
     width: 140px;
@@ -77,4 +77,19 @@
     position: relative;
 
     height: 90px;
+}
+
+.comment {
+    margin-top: -1px;
+    border-radius: 0;
+}
+
+.comment p {
+    padding: 5px 5px 5px 15px !important;
+
+    font-size: 20px !important;
+}
+
+.comment h3 {
+    font-size: 22px !important;
 }

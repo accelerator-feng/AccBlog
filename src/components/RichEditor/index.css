@@ -1,7 +1,15 @@
 .editor {
     margin-top: 20px;
+
+    background: #fff;
 }
 
-:global(.public-DraftEditor-content) {
-    min-height: 120px !important;
+.editor p {
+    line-height: 20px;
+}
+
+.btn {
+    float: right;
+
+    margin-top: 5px;
 }
