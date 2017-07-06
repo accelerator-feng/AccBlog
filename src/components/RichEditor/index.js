@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { connect } from 'dva';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -8,6 +8,7 @@ import styles from './index.css';
 class RichEditor extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { content: '' };
     this.quillRef = null; // Quill instance
     this.reactQuillRef = null; // ReactQuill component
     this.modules = {
@@ -56,12 +57,15 @@ class RichEditor extends React.Component {
   };
 
   handleClick = () => {
-    if (this.trim(this.quillRef.getText()) === '') return;
+    if (this.trim(this.quillRef.getText()) === '') {
+      message.error('评论内容不能为空');
+      return;
+    }
     const date = new Date();
     const month = String(date.getMonth() + 1);
     const time = `${date.getFullYear()}-${month.padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
     const content = this.state.content;
-    this.reactQuillRef.setEditorContents(this.reactQuillRef.getEditor(), '');
+    this.reactQuillRef.setEditorContents(this.quillRef, '');
     this.props.dispatch({
       type: 'comment/push',
       payload: { content, time },
@@ -79,7 +83,6 @@ class RichEditor extends React.Component {
           ref={el => {
             this.reactQuillRef = el;
           }}
-          onKeyUp={this.handleKeyUp}
           onChange={this.handleChange}
           className={styles.editor}
           placeholder="写下你的评论..."
@@ -91,7 +94,7 @@ class RichEditor extends React.Component {
           type="primary"
           className={styles.btn}
         >
-          发送
+          发布
         </Button>
       </div>
     );
