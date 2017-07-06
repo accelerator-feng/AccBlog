@@ -27,6 +27,10 @@ export default {
         type: 'save',
         payload: data,
       });
+      yield put({
+        type: 'comment/fetch',
+        payload,
+      });
     },
     *showPage({ payload }, { call, put }) {
       NProgress.start();
@@ -55,10 +59,11 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname }) => {
-        const pattern = new RegExp(/\/article\/[a-zA-Z0-9_]+/);
+        const pattern = new RegExp(/\/article\/([a-zA-Z0-9_]+)/);
         if (pattern.test(pathname)) {
+          const payload = RegExp.$1;
           NProgress.start();
-          dispatch({ type: 'show', payload: pathname });
+          dispatch({ type: 'show', payload });
         }
       });
     },

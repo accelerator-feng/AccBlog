@@ -10,13 +10,9 @@ import RichEditor from '../components/RichEditor';
 import styles from './Article.css';
 
 class Article extends React.Component {
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'comment/fetch',
-    });
-  }
   render() {
     const { article, previous, next, loading, commentList } = this.props;
+    const articleId = article._id;
     const comments = commentList && commentList.length
       ? commentList.map(item => (
           <Card
@@ -24,7 +20,9 @@ class Article extends React.Component {
             title={item.username}
             className={styles.comment}
             extra={
-              <span>发布于<sapn style={{ marginLeft: 5 }}>{item.time}</sapn></span>
+              <span>
+                发布于<sapn style={{ marginLeft: 5 }}>{item.time}</sapn>
+              </span>
             }
           >
             <p dangerouslySetInnerHTML={{ __html: item.content }} />
@@ -123,12 +121,17 @@ class Article extends React.Component {
       <Row>
         <Col span={1} />
         <MediaQuery query="(min-device-width:500px)">
-          <Col span={17}>{main}{comments}<RichEditor /></Col>
+          <Col span={17}>
+            {main}{comments}<RichEditor articleId={articleId} />
+          </Col>
           <Col span={5}><Sidebar /></Col>
         </MediaQuery>
         <MediaQuery query="(max-device-width:500px)">
           <Col span={22}>
-            {main}{comments}<RichEditor /><Sidebar width="100%" />
+            {main}
+            {comments}
+            <RichEditor articleId={articleId} />
+            <Sidebar width="100%" />
           </Col>
         </MediaQuery>
         <Col span={1} />

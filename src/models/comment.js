@@ -8,7 +8,7 @@ export default {
   effects: {
     *fetch({ payload }, { call, put }) {
       NProgress.start();
-      const { data } = yield call(fetch);
+      const { data } = yield call(fetch, payload);
       yield put({
         type: 'save',
         payload: data,
@@ -18,6 +18,7 @@ export default {
       yield call(push, payload);
       yield put({
         type: 'fetch',
+        payload: payload.articleId,
       });
     },
   },

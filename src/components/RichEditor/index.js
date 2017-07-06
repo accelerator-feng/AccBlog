@@ -61,6 +61,7 @@ class RichEditor extends React.Component {
       message.error('评论内容不能为空');
       return;
     }
+    const articleId = this.props.articleId;
     const date = new Date();
     const month = String(date.getMonth() + 1);
     const time = `${date.getFullYear()}-${month.padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
@@ -68,7 +69,7 @@ class RichEditor extends React.Component {
     this.reactQuillRef.setEditorContents(this.quillRef, '');
     this.props.dispatch({
       type: 'comment/push',
-      payload: { content, time },
+      payload: { content, time, articleId },
     });
   };
 

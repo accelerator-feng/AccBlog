@@ -10,6 +10,6 @@ export async function push(content) {
   });
 }
 
-export async function fetch() {
-  return request('/api/comment');
+export async function fetch(id) {
+  return request(`/api/comment/${id}`);
 }
