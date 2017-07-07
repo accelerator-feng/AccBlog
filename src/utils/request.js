@@ -30,7 +30,7 @@ export default function request(url, options = {}) {
   if (options.method === 'POST' || options.method === 'DELETE') {
     options.headers['x-csrf-token'] = getCookie('csrfToken'); // eslint-disable-line
   }
-  return fetch(url, Object.assign(options, { credentials: 'include' }))
+  return fetch(url, Object.assign({ credentials: 'include' }, options))
     .then(parseJSON)
     .then(checkStatus)
     .then(data => ({ data }))

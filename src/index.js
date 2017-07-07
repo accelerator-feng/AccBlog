@@ -20,6 +20,7 @@ app.model(require('./models/article'));
 app.model(require('./models/archive'));
 app.model(require('./models/category'));
 app.model(require('./models/comment'));
+app.model(require('./models/music'));
 
 // 4. Router
 app.router(require('./router'));

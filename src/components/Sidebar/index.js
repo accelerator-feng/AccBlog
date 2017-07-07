@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'dva';
 import { Card, Calendar } from 'antd';
 import { Link } from 'dva/router';
+import MediaQuery from 'react-responsive';
+import Music from '../Music';
 
 import styles from './index.css';
 
@@ -51,6 +53,9 @@ class Sidebar extends React.Component {
     }
     return (
       <div>
+        <MediaQuery query="(min-device-width:1250px)">
+          <Music />
+        </MediaQuery>
         <div
           style={{
             width,
