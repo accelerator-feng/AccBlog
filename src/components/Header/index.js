@@ -4,7 +4,6 @@ import { Link } from 'dva/router';
 import MediaQuery from 'react-responsive';
 
 import styles from './index.css';
-import logo from '../../assets/logo.png';
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -61,7 +60,11 @@ export default class Header extends React.Component {
     );
     const title = (
       <Link to="/">
-        <img src={logo} alt="logo" className={styles.logo} />
+        <img
+          src="http://cdn.yinfengblog.com/logo.png"
+          alt="logo"
+          className={styles.logo}
+        />
         <span className={styles.title}>和光同尘</span>
         <span className={styles.desc}>前端小白的学习笔记</span>
       </Link>

@@ -6,7 +6,7 @@ export default {
   state: {
     m4a: 'http://ws.stream.qqmusic.qq.com/9063002.m4a?fromtag=46',
     songname: '江南',
-    img: 'http://i.gtimg.cn/music/photo/mid_album_90/9/I/000y5gq7449K9I.jpg',
+    img: 'http://cdn.yinfengblog.com/linjunjie.jpg',
     singername: '林俊杰',
   },
 

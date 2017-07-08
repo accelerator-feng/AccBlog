@@ -4,7 +4,6 @@ import { Link } from 'dva/router';
 import MediaQuery from 'react-responsive';
 
 import styles from './index.css';
-import QRcode from '../../assets/QRcode.png';
 
 export default function Footer() {
   const socialFont = (
@@ -29,7 +28,7 @@ export default function Footer() {
         placement="topLeft"
         content={
           <img
-            src={QRcode}
+            src="http://cdn.yinfengblog.com/QRcode.png"
             width="100px"
             height="100px"
             style={{ marginTop: '8px' }}

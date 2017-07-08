@@ -23,7 +23,7 @@
     width: 110px;
     height: 110px;
 
-    background: no-repeat url("../../assets/tuzi.jpg") ;
+    background: no-repeat url("http://cdn.yinfengblog.com/tuzi.jpg") ;
     background-size: 100% 100%;
 
     transition: transform 2s ease-out;
