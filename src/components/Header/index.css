@@ -45,7 +45,32 @@
 }
 
 .username {
-    margin-right: 5px;
+    font-size: 20px !important;
+    font-weight: 400;
+    height: 36px !important;
+    vertical-align: middle;
+
 
     color: #fff;
+}
+
+.upload {
+    position: fixed;
+    top: 0;
+    right: 0 ;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+
+    margin: auto;
+    width: 80px;
+    height: 80px;
+}
+
+.avatar {
+
+vertical-align: middle;
+    margin-right: 5px;
+    border-radius: 50%;
+    width: 35px;
 }

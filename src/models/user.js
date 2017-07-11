@@ -19,7 +19,7 @@ export default {
         payload.handleCancel();
         yield put({
           type: 'save',
-          payload: { hasLogined: true, username: data.username },
+          payload: Object.assign(data, { hasLogined: true }),
         });
       }
     },
@@ -47,8 +47,8 @@ export default {
       yield put({
         type: 'save',
         payload: data.username
-          ? { hasLogined: true, username: data.username }
-          : { hasLogined: false, username: '' },
+          ? { hasLogined: true, username: data.username, avatar: data.avatar }
+          : { hasLogined: false, username: '', avatar: '' },
       });
     },
   },

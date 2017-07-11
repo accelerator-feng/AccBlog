@@ -17,7 +17,18 @@ class Article extends React.Component {
       ? commentList.map(item => (
           <Card
             key={item._id}
-            title={item.username}
+            title={
+              <span>
+                {item.user.avatar
+                  ? <img
+                      className={styles.avatar}
+                      src={item.user.avatar}
+                      alt="头像"
+                    />
+                  : <Icon type="github" style={{ marginRight: 5 }} />}
+                {item.user.username}
+              </span>
+            }
             className={styles.comment}
             extra={
               <span>

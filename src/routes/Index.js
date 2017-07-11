@@ -17,6 +17,7 @@ class Index extends React.Component {
       hasLogined,
       dispatch,
       username,
+      avatar,
     } = this.props;
     return (
       <div>
@@ -24,6 +25,7 @@ class Index extends React.Component {
           dispatch={dispatch}
           hasLogined={hasLogined}
           username={username}
+          avatar={avatar}
         />
         <div className={styles.children}>
           {children}
@@ -59,5 +61,6 @@ export default connect(state => {
     isModalVisible: state.user.isModalVisible,
     hasLogined: state.user.hasLogined,
     username: state.user.username,
+    avatar: state.user.avatar,
   };
 })(Index);

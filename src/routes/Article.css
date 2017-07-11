@@ -93,3 +93,10 @@
 .comment h3 {
     font-size: 22px !important;
 }
+
+.avatar {
+    margin-right: 8px;
+    border-radius: 50%;
+    width: 35px;
+    vertical-align: middle;
+}

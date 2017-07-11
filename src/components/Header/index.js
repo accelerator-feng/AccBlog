@@ -1,20 +1,64 @@
 import React from 'react';
-import { Menu, Row, Col, Icon, Button, Dropdown } from 'antd';
+import {
+  Menu,
+  Row,
+  Col,
+  Icon,
+  Button,
+  Dropdown,
+  Upload,
+  message,
+  Modal,
+} from 'antd';
 import { Link } from 'dva/router';
 import MediaQuery from 'react-responsive';
 
 import styles from './index.css';
 
+const Dragger = Upload.Dragger;
+
+function beforeUpload(file) {
+  const isJPG = file.type === 'image/jpeg';
+  if (!isJPG) {
+    message.error('只能上传JPG文件!');
+  }
+  const isLt2M = file.size / 1024 / 1024 < 2;
+  if (!isLt2M) {
+    message.error('头像必须小于2MB!');
+  }
+  return isJPG && isLt2M;
+}
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { current: 'look' };
+    this.state = {
+      current: 'look',
+      visible: false,
+      imageUrl: '',
+    };
   }
   componentDidMount() {
     this.props.dispatch({
       type: 'user/checkLogin',
     });
   }
+  onChange = info => {
+    const status = info.file.status;
+    if (status === 'done') {
+      this.setState({ imageUrl: info.file.response.imageUrl });
+      this.setState({ visible: false });
+    } else if (status === 'error') {
+      message.error('头像上传失败');
+    }
+  };
+
   handleClick = e => {
     this.setState({
       current: e.key,
@@ -27,6 +71,14 @@ export default class Header extends React.Component {
     }
   };
 
+  changeAvatar = () => {
+    this.setState({ visible: true });
+  };
+
+  handleCancel = () => {
+    this.setState({ visible: false });
+  };
+
   handleLogout = () => {
     this.props.dispatch({
       type: 'user/logout',
@@ -34,7 +86,8 @@ export default class Header extends React.Component {
   };
 
   render() {
-    const { hasLogined, username } = this.props;
+    const { hasLogined, username, avatar } = this.props;
+    const { imageUrl, visible } = this.state;
     const menu = (
       <Menu onClick={this.handleClick}>
         <Menu.Item key="index">
@@ -102,6 +155,18 @@ export default class Header extends React.Component {
               {hasLogined
                 ? <Menu.Item key="logout">
                     <Button type="primary" className={styles.username}>
+                      {avatar || imageUrl
+                        ? <img
+                            className={styles.avatar}
+                            src={imageUrl || avatar}
+                            alt="头像"
+                            onClick={this.changeAvatar}
+                          />
+                        : <Icon
+                            type="github"
+                            onClick={this.changeAvatar}
+                            style={{ marginRight: 0 }}
+                          />}
                       {username}
                     </Button>
                     <Button onClick={this.handleLogout}>
@@ -114,6 +179,32 @@ export default class Header extends React.Component {
             </Menu>
           </Col>
           <Col span={1} />
+          <Modal
+            title="设置头像"
+            visible={visible}
+            onCancel={this.handleCancel}
+            footer={null}
+          >
+            <Dragger
+              name="avatar"
+              showUploadList={false}
+              action="/api/avatar"
+              data={{ username }}
+              onChange={this.onChange}
+              beforeUpload={beforeUpload}
+              headers={{ 'x-csrf-token': getCookie('csrfToken') }}
+            >
+              <p className="ant-upload-drag-icon">
+                <Icon type="inbox" />
+              </p>
+              <p className="ant-upload-text">
+                点击或拖动文件到此区域上传
+              </p>
+              <p className="ant-upload-hint">
+                头像必须小于2MB且只能上传JPG文件
+              </p>
+            </Dragger>
+          </Modal>
         </MediaQuery>
         <MediaQuery query="(max-device-width:800px)">
           <Col span={1} />
