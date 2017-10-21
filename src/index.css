@@ -19,7 +19,7 @@ body,
 }
 
 :global(.ant-card-head) {
-    font-size: 40px;
+    font-size: 12px;
     line-height: 40px;
 }
 :global(.ant-card-head-title) {

@@ -14,7 +14,7 @@ export default {
       NProgress.start();
       const { data } = yield init();
       yield put({
-        type: 'save',
+        type: 'load',
         payload: data,
       });
     },
@@ -50,9 +50,13 @@ export default {
   },
 
   reducers: {
-    save(state, action) {
+    load(state, action) {
       NProgress.done();
       return { ...state, ...action.payload };
+    },
+    save(state, action) {
+      NProgress.done();
+      return { ...state, previous: null, next: null, ...action.payload };
     },
   },
 
