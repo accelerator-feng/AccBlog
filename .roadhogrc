@@ -21,14 +21,14 @@
       "secure": false
     }
   },
+  "cssModulesExclude": [
+    "./src/index.scss"
+  ],
   "externals": {
     "react": "React",
     "react-dom": "ReactDOM",
     "react-quill": "ReactQuill"
   },
-  "cssModulesExclude": [
-    "./src/index.scss"
-  ],
   "sass": true,
   "hash": true,
   "multipage": false,
