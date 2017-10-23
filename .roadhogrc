@@ -1,7 +1,7 @@
 {
   "entry": "src/index.js",
   "disableCSSModules": false,
-  "publicPath": "/",
+  "publicPath": "http://cdn.yinfengblog.com/",
   "outputPath": "./dist",
   "extraBabelPlugins": [
     "transform-runtime",
