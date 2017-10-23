@@ -7,7 +7,7 @@ import marked from 'marked';
 import Sidebar from '../components/Sidebar';
 import RichEditor from '../components/RichEditor';
 
-import styles from './Article.css';
+import styles from './Article.scss';
 
 class Article extends React.Component {
   render() {

@@ -15,21 +15,22 @@
     ]
   ],
   "extraPostCSSPlugins": [],
-  "autoprefixer": {
-    "browsers": [
-      "> 5%",
-      "last 2 versions",
-      "iOS >= 8",
-      "Android >= 4"
-    ]
-  },
   "proxy": {
     "/api": {
       "target": "http://localhost:7001",
       "secure": false
     }
   },
-  "externals": null,
+  "externals": {
+    "react": "React",
+    "react-dom": "ReactDOM",
+    "react-quill": "ReactQuill"
+  },
+  "cssModulesExclude": [
+    "./src/index.scss"
+  ],
+  "sass": true,
+  "hash": true,
   "multipage": false,
   "define": null,
   "theme": {

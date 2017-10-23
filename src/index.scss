@@ -1,0 +1,75 @@
+html,
+body,
+#root {
+  height: 100%;
+
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+
+  background: #ddd;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  .ant-menu {
+    border-bottom: none;
+
+    background: #2ca6cb;
+  }
+
+  .ant-back-top {
+    bottom: 100px;
+  }
+
+  .ant-card {
+    .ant-card-head {
+      font-size: 12px;
+      line-height: 40px;
+
+      .ant-card-head-title {
+        font-size: 25px;
+        font-weight: 400;
+
+        color: #2ca6cb;
+      }
+    }
+
+    .ant-card-body {
+      padding: 0;
+    }
+  }
+
+  h1 {
+    border-bottom: 2px solid #dbdbdb;
+
+    line-height: 60px;
+  }
+
+  h2 {
+    margin-top: 20px;
+    border-bottom: 2px solid #dbdbdb;
+
+    line-height: 45px;
+  }
+
+  p {
+    line-height: 40px;
+  }
+
+  pre {
+    margin: 7px 0;
+    padding: 7px 16px;
+
+    white-space: pre-wrap;
+
+    color: #fff;
+    background: #23241f;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  a:focus {
+    text-decoration: none;
+  }
+}

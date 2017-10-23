@@ -4,7 +4,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import MediaQuery from 'react-responsive';
 
-import styles from './index.css';
+import styles from './index.scss';
 
 function ArticleCard(props) {
   const { articles, loading } = props;

@@ -4,7 +4,7 @@ import { Link } from 'dva/router';
 import { Card, Row, Col, Icon, Table } from 'antd';
 import MediaQuery from 'react-responsive';
 
-import styles from './Categories.css';
+import styles from './Categories.scss';
 
 class Categories extends React.Component {
   componentDidMount() {

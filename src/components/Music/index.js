@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Icon } from 'antd';
 import { connect } from 'dva';
 
-import styles from './index.css';
+import styles from './index.scss';
 
 class Music extends React.Component {
   constructor(props) {

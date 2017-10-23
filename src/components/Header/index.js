@@ -13,7 +13,7 @@ import {
 import { Link } from 'dva/router';
 import MediaQuery from 'react-responsive';
 
-import styles from './index.css';
+import styles from './index.scss';
 
 const Dragger = Upload.Dragger;
 

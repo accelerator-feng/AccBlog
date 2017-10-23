@@ -1,4 +1,12 @@
-.title {
+.container {
+  padding-top: 29px;
+  height: 180px;
+
+  background: #2ca6cb;
+
+  box-shadow: 2px 4px 5px rgba(3, 3, 3, .2);
+
+  .title {
     position: absolute;
 
     margin-left: 10px;
@@ -7,25 +15,16 @@
     font-weight: 400;
 
     color: #fff;
-}
+  }
 
-.logo {
+  .logo {
     width: 83px;
     height: 83px;
 
     vertical-align: middle;
-}
+  }
 
-.container {
-    padding-top: 29px;
-    height: 180px;
-
-    background: #2ca6cb;
-
-    box-shadow: 2px 4px 5px rgba(3,3,3,.2);
-}
-
-.desc {
+  .desc {
     position: absolute;
     top: 62px;
 
@@ -34,17 +33,17 @@
     font-size: 18px;
 
     color: #fff;
-}
+  }
 
-.menu {
+  .menu {
     float: right;
 
     font-size: 25px;
 
     color: #fff;
-}
+  }
 
-.username {
+  .username {
     font-size: 20px !important;
     font-weight: 400;
     height: 36px !important;
@@ -52,12 +51,12 @@
 
 
     color: #fff;
-}
+  }
 
-.upload {
+  .upload {
     position: fixed;
     top: 0;
-    right: 0 ;
+    right: 0;
     bottom: 0;
     left: 0;
     z-index: 1;
@@ -65,12 +64,12 @@
     margin: auto;
     width: 80px;
     height: 80px;
-}
+  }
 
-.avatar {
-
-vertical-align: middle;
+  .avatar {
+    vertical-align: middle;
     margin-right: 5px;
     border-radius: 50%;
     width: 35px;
+  }
 }

@@ -4,7 +4,7 @@ import { Link } from 'dva/router';
 import { Card, Row, Col, Icon, Table } from 'antd';
 import MediaQuery from 'react-responsive';
 
-import styles from './Archives.css';
+import styles from './Archives.scss';
 
 class Archives extends React.Component {
   componentDidMount() {

@@ -5,7 +5,7 @@ import { Link } from 'dva/router';
 import MediaQuery from 'react-responsive';
 import Music from '../Music';
 
-import styles from './index.css';
+import styles from './index.scss';
 
 class Sidebar extends React.Component {
   getMonthData = value => {
