@@ -1,63 +1,77 @@
 import React from 'react';
 import { Router } from 'dva/router';
+import Index from './routes/Index';
 
-const routes = {
-  path: '/',
+const cached = {};
+function registerModel(app, model) {
+  if (!cached[model.namespace]) {
+    app.model(model);
+    cached[model.namespace] = 1;
+  }
+}
 
-  getComponents(nextState, cb) {
-    import(/* webpackChunkName: 'index' */ './routes/Index')
-      .then(chunk => cb(null, chunk))
-      .catch(cb);
-  },
+function RouterConfig({ history, app }) {
+  const routes = {
+    path: '/',
 
-  indexRoute: {
-    getComponent(nextState, cb) {
-      import(/* webpackChunkName: 'home' */ './routes/Home')
-        .then(chunk => cb(null, chunk))
-        .catch(cb);
-    },
-  },
+    component: Index,
 
-  childRoutes: [
-    {
-      path: 'about',
+    indexRoute: {
       getComponent(nextState, cb) {
-        import(/* webpackChunkName: 'about' */ './routes/About')
+        import(/* webpackChunkName: 'home' */ './routes/Home')
           .then(chunk => cb(null, chunk))
           .catch(cb);
       },
     },
 
-    {
-      path: 'archives(/:year)(/:month)',
-      getComponent(nextState, cb) {
-        import(/* webpackChunkName: 'archives' */ './routes/Archives')
-          .then(chunk => cb(null, chunk))
-          .catch(cb);
+    childRoutes: [
+      {
+        path: 'about',
+        getComponent(nextState, cb) {
+          import(/* webpackChunkName: 'about' */ './routes/About')
+            .then(chunk => cb(null, chunk))
+            .catch(cb);
+        },
       },
-    },
 
-    {
-      path: 'categories(/:category)',
-      getComponent(nextState, cb) {
-        import(/* webpackChunkName: 'categories' */ './routes/Categories')
-          .then(chunk => cb(null, chunk))
-          .catch(cb);
+      {
+        path: 'archives(/:year)(/:month)',
+        getComponent(nextState, cb) {
+          import(/* webpackChunkName: 'archives' */ './routes/Archives')
+            .then(chunk => {
+              registerModel(app, require('./models/archive'));
+              cb(null, chunk);
+            })
+            .catch(cb);
+        },
       },
-    },
 
-    {
-      path: 'article/:id',
-      getComponent(nextState, cb) {
-        import(/* webpackChunkName: 'article' */ './routes/Article')
-          .then(chunk => cb(null, chunk))
-          .catch(cb);
+      {
+        path: 'categories(/:category)',
+        getComponent(nextState, cb) {
+          import(/* webpackChunkName: 'categories' */ './routes/Categories')
+            .then(chunk => {
+              registerModel(app, require('./models/category'));
+              cb(null, chunk);
+            })
+            .catch(cb);
+        },
       },
-    },
-  ],
-};
 
-function RouterConfig({ history }) {
+      {
+        path: 'article/:id',
+        getComponent(nextState, cb) {
+          import(/* webpackChunkName: 'article' */ './routes/Article')
+            .then(chunk => {
+              registerModel(app, require('./models/comment'));
+              cb(null, chunk);
+            })
+            .catch(cb);
+        },
+      },
+    ],
+  };
+
   return <Router history={history} routes={routes} />;
 }
 

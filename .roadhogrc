@@ -27,10 +27,11 @@
   "externals": {
     "react": "React",
     "react-dom": "ReactDOM",
-    "react-quill": "ReactQuill"
+    "react-quill": "ReactQuill",
+    "moment": "moment",
+    "../moment": "moment"
   },
   "sass": true,
-  "hash": true,
   "multipage": false,
   "define": null,
   "theme": {
