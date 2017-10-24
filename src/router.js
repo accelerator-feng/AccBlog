@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router } from 'dva/router';
 import Index from './routes/Index';
+import Home from './routes/Home';
 
 const cached = {};
 function registerModel(app, model) {
@@ -16,13 +17,7 @@ function RouterConfig({ history, app }) {
 
     component: Index,
 
-    indexRoute: {
-      getComponent(nextState, cb) {
-        import(/* webpackChunkName: 'home' */ './routes/Home')
-          .then(chunk => cb(null, chunk))
-          .catch(cb);
-      },
-    },
+    indexRoute: { component: Home },
 
     childRoutes: [
       {

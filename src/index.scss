@@ -72,4 +72,13 @@ body,
   a:focus {
     text-decoration: none;
   }
+
+  .bar {
+    background: #fff !important;
+  }
+
+  .spinner-icon {
+    border-top-color: #fff !important;
+    border-left-color: #fff !important;
+  }
 }

@@ -31,6 +31,7 @@
     "moment": "moment",
     "../moment": "moment"
   },
+  "hash": true,
   "sass": true,
   "multipage": false,
   "define": null,
